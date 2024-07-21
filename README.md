@@ -2445,3 +2445,165 @@ Topological sort can be implemented using DFS. Visit all nodes, and for each nod
 
 ---
 
+### Bit Manipulation
+
+#### Description
+Bit manipulation is a technique used in computer science to directly operate on the binary representation of integers. It involves using bitwise operators to perform operations at the bit level. Bit manipulation is often used to optimize algorithms and solve problems more efficiently.
+
+#### Common Bitwise Operations
+
+1. **AND (`&`):**
+   - **Operation:** `1 & 1 = 1`, `1 & 0 = 0`, `0 & 1 = 0`, `0 & 0 = 0`
+   - **Use:** To check if a bit is set or to clear specific bits.
+
+2. **OR (`|`):**
+   - **Operation:** `1 | 1 = 1`, `1 | 0 = 1`, `0 | 1 = 1`, `0 | 0 = 0`
+   - **Use:** To set specific bits.
+
+3. **XOR (`^`):**
+   - **Operation:** `1 ^ 1 = 0`, `1 ^ 0 = 1`, `0 ^ 1 = 1`, `0 ^ 0 = 0`
+   - **Use:** To toggle specific bits or detect changes.
+
+4. **NOT (`~`):**
+   - **Operation:** `~1 = 0`, `~0 = 1`
+   - **Use:** To invert all bits in a binary representation.
+
+5. **Left Shift (`<<`):**
+   - **Operation:** Shifts bits to the left, filling with zeros on the right. Equivalent to multiplying by 2.
+   - **Example:** `001 << 1 = 010`
+
+6. **Right Shift (`>>`):**
+   - **Operation:** Shifts bits to the right, filling with zeros on the left. Equivalent to dividing by 2.
+   - **Example:** `010 >> 1 = 001`
+
+#### Demonstration
+
+**Example Problem: Count the Number of 1 Bits**
+
+To count the number of 1 bits in the binary representation of an integer, use a loop to check each bit and shift the integer to the right until all bits are processed.
+
+- **Code Example:**
+    ```java
+    public static int countBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                count++;
+            }
+            n = n >> 1; // same as n / 2
+        }
+        return count;
+    }
+    ```
+
+**Example:**
+For the integer `23` (binary representation `10111`):
+- First bit (`1`): Increment count, shift right (`01011`)
+- Second bit (`1`): Increment count, shift right (`00101`)
+- Third bit (`1`): Increment count, shift right (`00010`)
+- Fourth bit (`0`): Shift right (`00001`)
+- Fifth bit (`1`): Increment count, shift right (`00000`)
+
+Final count is `4`.
+
+**Time Complexity:**
+- **Bit Manipulation: \(O(\log n)\)**
+  - **Explanation:** The operations involve iterating over each bit, leading to logarithmic time complexity based on the number of bits in the integer.
+
+---
+
+### Truth Tables and Bit Operations
+
+**AND Operation:**
+- **Example:**
+    ```java
+    int n = 1 & 1; // Result: 1
+    ```
+
+**OR Operation:**
+- **Example:**
+    ```java
+    int n = 1 | 0; // Result: 1
+    ```
+
+**XOR Operation:**
+- **Example:**
+    ```java
+    int n = 0 ^ 1; // Result: 1
+    ```
+
+**NOT Operation:**
+- **Example:**
+    ```java
+    int n = ~n; // Inverts all bits in n
+    ```
+
+**Bit Shifting:**
+- **Left Shift:**
+    ```java
+    int n = 1;
+    n = n << 1; // Result: 2 (binary 10)
+    ```
+- **Right Shift:**
+    ```java
+    int n = 2;
+    n = n >> 1; // Result: 1 (binary 1)
+    ```
+
+**Time Complexity:**
+- **Bitwise AND, OR, XOR, NOT, Shifts: \(O(1)\)**
+  - **Explanation:** Each operation works directly on the binary representation and takes constant time.
+
+---
+
+### Applications
+
+**Number of 1 Bits (Hamming Weight):**
+- **Problem:** Count the number of 1 bits in an integer.
+- **Code Example:**
+    ```java
+    public static int hammingWeight(int n) {
+        int count = 0;
+        while (n != 0) {
+            n &= (n - 1); // Clear the least significant bit set
+            count++;
+        }
+        return count;
+    }
+    ```
+
+**Counting Bits:**
+- **Problem:** Count the number of 1 bits in all numbers from `0` to `n`.
+- **Code Example:**
+    ```java
+    public static int[] countBits(int num) {
+        int[] res = new int[num + 1];
+        for (int i = 1; i <= num; i++) {
+            res[i] = res[i >> 1] + (i & 1);
+        }
+        return res;
+    }
+    ```
+
+**Reverse Bits:**
+- **Problem:** Reverse the bits of a given 32-bit unsigned integer.
+- **Code Example:**
+    ```java
+    public static int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result <<= 1;
+            if ((n & 1) == 1) {
+                result++;
+            }
+            n >>= 1;
+        }
+        return result;
+    }
+    ```
+
+**Time Complexity:**
+- **Number of 1 Bits (Hamming Weight), Counting Bits, Reverse Bits: \(O(\log n)\)**
+  - **Explanation:** Each operation iterates over the bits of the integer, resulting in logarithmic time complexity based on the number of bits.
+
+---
