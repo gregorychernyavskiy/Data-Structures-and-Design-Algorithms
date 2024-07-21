@@ -1074,6 +1074,7 @@ This involves using a binary search algorithm to guess the target within the pro
 ---
 ## TREES
 ---
+### Leetcode
 
 #### Binary Search Tree
 1. [Search In A Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/) - Easy
@@ -1093,7 +1094,31 @@ This involves using a binary search algorithm to guess the target within the pro
 #### Breadth-First Search
 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) - Medium
 2. [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) - Medium
+---
+### DESIGN TREES
 
+#### Trie
+1. [Implement Trie Prefix Tree](https://leetcode.com/problems/implement-trie-prefix-tree/) - Medium
+2. [Design Add And Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) - Medium
+3. [Word Search II](https://leetcode.com/problems/word-search-ii/) - Hard
+4. [Prefix And Suffix Search](https://leetcode.com/problems/prefix-and-suffix-search/) - Hard
+
+#### Union-Find
+1. [Redundant Connection](https://leetcode.com/problems/redundant-connection/) - Medium
+2. [Accounts Merge](https://leetcode.com/problems/accounts-merge/) - Medium
+3. [Number of Connected Components In An Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) - Medium
+4. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) - Medium
+
+#### Segment Tree
+1. [Range Sum Query Mutable](https://leetcode.com/problems/range-sum-query-mutable/) - Medium
+2. [Queue Reconstruction By Height](https://leetcode.com/problems/queue-reconstruction-by-height/) - Medium
+3. [My Calendar I](https://leetcode.com/problems/my-calendar-i/) - Medium
+4. [Longest Increasing Subsequence II](https://leetcode.com/problems/longest-increasing-subsequence-ii/) - Hard
+
+#### Iterative DFS
+1. [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator/) - Medium
+2. [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/) - Easy
+3. [Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/) - Easy
 ---
 
 ### Binary Tree
