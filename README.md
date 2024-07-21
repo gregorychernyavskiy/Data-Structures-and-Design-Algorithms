@@ -1796,3 +1796,186 @@ Maintain two heaps such that the max-heap contains the smaller half of the numbe
 
 ---
 
+### Tree Maze
+
+#### Description
+The tree maze problem involves finding a path from the root of a binary tree to a leaf node without encountering any nodes with a value of zero. This problem is typically solved using depth-first search (DFS).
+
+#### Operations
+
+**DFS Approach:**
+Perform a depth-first search from the root node. If you encounter a node with a value of zero, backtrack. If you reach a leaf node without encountering any zeros, return true.
+
+- **Code Example:**
+    ```java
+    public boolean canReachLeaf(TreeNode root) {
+        if (root == null || root.val == 0) {
+            return false;
+        }
+        if (root.left == null && root.right == null) {
+            return true;
+        }
+        if (canReachLeaf(root.left)) {
+            return true;
+        }
+        return canReachLeaf(root.right);
+    }
+    ```
+
+**Path Retrieval:**
+To retrieve the path, use a list to store the nodes in the current path. Backtrack by removing nodes from the list if the path is invalid.
+
+- **Code Example:**
+    ```java
+    public boolean leafPath(TreeNode root, ArrayList<Integer> path) {
+        if (root == null || root.val == 0) {
+            return false;
+        }
+        path.add(root.val);
+        if (root.left == null && root.right == null) {
+            return true;
+        }
+        if (leafPath(root.left, path)) {
+            return true;
+        }
+        if (leafPath(root.right, path)) {
+            return true;
+        }
+        path.remove(path.size() - 1);
+        return false;
+    }
+    ```
+
+**Time Complexity:**
+- **DFS and Path Retrieval: \(O(n)\)**
+    - **Explanation:** The algorithm visits each node exactly once.
+
+---
+
+### Subsets
+
+#### Description
+Subsets are all possible combinations of elements from a set where the order does not matter. The elements must be distinct.
+
+#### Operations
+
+**Generating Subsets:**
+Use backtracking to explore all possible subsets by deciding whether to include each element.
+
+- **Code Example:**
+    ```java
+    public static List<List<Integer>> subsetsWithoutDuplicates(int[] nums) {
+        List<List<Integer>> subsets = new ArrayList<>();
+        List<Integer> curSet = new ArrayList<>();
+        helper(0, nums, curSet, subsets);
+        return subsets;
+    }
+
+    public static void helper(int i, int[] nums, List<Integer> curSet, List<List<Integer>> subsets) {
+        if (i >= nums.length) {
+            subsets.add(new ArrayList<>(curSet));
+            return;
+        }
+        // decision to include nums[i]
+        curSet.add(nums[i]);
+        helper(i + 1, nums, curSet, subsets);
+        curSet.remove(curSet.size() - 1);
+        // decision NOT to include nums[i]
+        helper(i + 1, nums, curSet, subsets);
+    }
+    ```
+
+**Time Complexity:**
+- **Subsets: \(O(n \cdot 2^n)\)**
+    - **Explanation:** Each element can be included or not included, resulting in \(2^n\) subsets. Each subset takes \(O(n)\) time to build.
+
+---
+
+### Combinations
+
+#### Description
+Combinations involve selecting elements from a set where the order does not matter, but the elements must be distinct. Typically, combinations have a fixed size \(k\).
+
+#### Operations
+
+**Generating Combinations:**
+Use backtracking to explore all possible combinations of a given size \(k\) from a range of numbers.
+
+- **Code Example:**
+    ```java
+    public static List<List<Integer>> combinations(int n, int k) {
+        List<List<Integer>> combs = new ArrayList<>();
+        helper(1, new ArrayList<>(), combs, n, k);
+        return combs;
+    }
+
+    public static void helper(int i, List<Integer> curComb, List<List<Integer>> combs, int n, int k) {
+        if (curComb.size() == k) {
+            combs.add(new ArrayList<>(curComb));
+            return;
+        }
+        if (i > n) {
+            return;
+        }
+        // decision to include i
+        curComb.add(i);
+        helper(i + 1, curComb, combs, n, k);
+        curComb.remove(curComb.size() - 1);
+        // decision to NOT include i
+        helper(i + 1, curComb, combs, n, k);
+    }
+    ```
+
+**Time Complexity:**
+- **Combinations: \(O(k \cdot C(n, k))\)**
+    - **Explanation:** Generating each combination takes \(O(k)\) time, and there are \(C(n, k)\) combinations.
+
+---
+
+### Permutations
+
+#### Description
+Permutations are all possible arrangements of a set of distinct elements where the order matters. The number of permutations of \(n\) elements is \(n!\).
+
+#### Operations
+
+**Generating Permutations:**
+Use backtracking to explore all possible permutations by swapping elements.
+
+- **Code Example:**
+    ```java
+    public static List<List<Integer>> permutations(int[] nums) {
+        List<List<Integer>> perms = new ArrayList<>();
+        helper(0, nums, perms);
+        return perms;
+    }
+
+    public static void helper(int i, int[] nums, List<List<Integer>> perms) {
+        if (i == nums.length) {
+            List<Integer> perm = new ArrayList<>();
+            for (int num : nums) {
+                perm.add(num);
+            }
+            perms.add(perm);
+            return;
+        }
+        for (int j = i; j < nums.length; j++) {
+            swap(nums, i, j);
+            helper(i + 1, nums, perms);
+            swap(nums, i, j);
+        }
+    }
+
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    ```
+
+**Time Complexity:**
+- **Permutations: \(O(n \cdot n!)\)**
+    - **Explanation:** There are \(n!\) permutations, and generating each permutation takes \(O(n)\) time.
+
+---
+
