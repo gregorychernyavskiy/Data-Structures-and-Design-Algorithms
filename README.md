@@ -194,3 +194,203 @@ public int dequeue() {
 #### Suggested Problems
 1. [Number of Students Unable to Eat Lunch](https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/) - Easy
 2. [Implement Stack Using Queues](https://leetcode.com/problems/implement-stack-using-queues/) - Easy
+
+### Sliding Window (Fixed Size)
+
+#### Description
+The fixed sliding window technique involves maintaining two pointers that are `k` elements apart. This technique is useful for problems that require examining subarrays or substrings of a fixed size. The goal is often to find some property within these fixed-size windows.
+
+#### Operations
+
+**Contains Duplicate II:**
+Given an array, return true if there are two elements within a window of size `k` that are equal.
+
+- **Brute Force Approach:**
+    - **Complexity:** O(n^2)
+    - **Code Example:**
+    ```java
+    public static boolean closeDuplicatesBruteForce(int[] nums, int k) {
+        for (int L = 0; L < nums.length; L++) {
+            for (int R = L + 1; R < Math.min(nums.length, L + k); R++) {
+                if (nums[L] == nums[R]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    ```
+
+- **Optimized Approach Using Sliding Window:**
+    - **Complexity:** O(n)
+    - **Code Example:**
+    ```java
+    public static boolean closeDuplicates(int[] nums, int k) {
+        HashSet<Integer> window = new HashSet<>(); // Current window of size <= k
+        int L = 0;
+        for (int R = 0; R < nums.length; R++) {
+            if (R - L + 1 > k) {
+                window.remove(nums[L]);
+                L++;
+            }
+            if (window.contains(nums[R])) {
+                return true;
+            }
+            window.add(nums[R]);
+        }
+        return false;
+    }
+    ```
+
+#### Suggested Problems
+1. [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/) - Easy
+2. [Number of Subarrays of Size K and Avg Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/) - Medium
+
+---
+
+### Sliding Window (Variable Size)
+
+#### Description
+The variable sliding window technique involves expanding and contracting the window size dynamically to satisfy a given constraint. This technique is useful for problems where the subarray size is not fixed and can vary.
+
+#### Operations
+
+**Longest Substring Without Repeating Characters:**
+Find the length of the longest subarray with unique values.
+
+- **Code Example:**
+    ```java
+    public static int longestSubarray(int[] nums) {
+        int length = 0;
+        int L = 0;
+        for (int R = 0; R < nums.length; R++) {
+            if (nums[L] != nums[R]) {
+                L = R;
+            }
+            length = Math.max(length, R - L + 1);
+        }
+        return length;
+    }
+    ```
+
+**Minimum Size Subarray Sum:**
+Find the minimum length subarray where the sum is greater than or equal to the target.
+
+- **Code Example:**
+    ```java
+    public static int shortestSubarray(int[] nums, int target) {
+        int L = 0, total = 0;
+        int length = Integer.MAX_VALUE;
+        for (int R = 0; R < nums.length; R++) {
+            total += nums[R];
+            while (total >= target) {
+                length = Math.min(R - L + 1, length);
+                total -= nums[L];
+                L++;
+            }
+        }
+        if (length ==  Integer.MAX_VALUE) {
+            return 0;
+        } 
+        return length;
+    }
+    ```
+
+#### Suggested Problems
+1. [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) - Medium
+2. [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) - Medium
+3. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) - Medium
+
+---
+
+### Two Pointers
+
+#### Description
+The two pointers technique involves using two pointers to iterate through an array or list. This technique is versatile and can solve various problems such as finding pairs with specific properties, reversing arrays, and detecting palindromes.
+
+#### Operations
+
+**Valid Palindrome:**
+Check if a string is a palindrome.
+
+- **Code Example:**
+    ```java
+    public static boolean isPalindrome(String word) {
+        int L = 0, R = word.length() - 1;
+        while (L < R) {
+            if (word.charAt(L) != word.charAt(R)) {
+                return false;
+            }
+            L++;
+            R--;
+        }
+        return true;
+    }
+    ```
+
+**Two Sum II:**
+Given a sorted input array, return the two indices of two elements that sum up to the target value.
+
+- **Code Example:**
+    ```java
+    public static int[] targetSum(int[] nums, int target) {
+        int L = 0, R = nums.length - 1;
+        while (L < R) {
+            if (nums[L] + nums[R] > target) {
+                R--;
+            } else if (nums[L] + nums[R] < target) {
+                L++;
+            } else {
+                return new int[] {L, R};
+            }
+        }
+        return null;
+    }
+    ```
+
+#### Suggested Problems
+1. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) - Easy
+2. [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) - Medium
+3. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
+4. [Remove Duplicates From Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) - Medium
+5. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) - Medium
+6. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) - Hard
+
+---
+
+### Prefix Sum
+
+#### Description
+Prefix sums are useful for quickly calculating the sum of elements in a subarray. By precomputing the cumulative sums of elements, you can answer range sum queries efficiently.
+
+#### Operations
+
+**Building the Prefix Sum Array:**
+Given an array, build a prefix sum array where each element at index `i` is the sum of the elements from the start of the array to `i`.
+
+- **Code Example:**
+    ```java
+    public class PrefixSum {
+        List<Integer> prefix;
+        public PrefixSum(int[] nums) {
+            prefix = new ArrayList<>();
+            int total = 0;
+            for (int n : nums) {
+                total += n;
+                prefix.add(total);
+            }
+        }
+        public int rangeSum(int left, int right) {
+            int preRight = prefix.get(right);
+            int preLeft = left > 0 ? prefix.get(left - 1) : 0;
+            return (preRight - preLeft);
+        }
+    }
+    ```
+
+#### Suggested Problems
+1. [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) - Medium
+2. [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) - Easy
+3. [Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) - Medium
+4. [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) - Easy
+5. [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) - Medium
