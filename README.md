@@ -119,8 +119,16 @@ public void resize() {
 ```
 
 ---
-
-### Stacks
+## STACKS
+---
+### Leetcode
+1. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) - Easy
+2. [Baseball Game](https://leetcode.com/problems/baseball-game/) - Easy
+3. [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) - Easy
+4. [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) - Medium
+5. [Remove All Adjacent Duplicates in String II](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/) - Medium
+6. [Min Stack](https://leetcode.com/problems/min-stack/) - Medium
+---
 
 #### Description
 A stack is a data structure that follows the Last In, First Out (LIFO) principle. The last element placed inside the stack is the first element that comes out. Stacks are dynamic data structures that support three primary operations: push, pop, and peek.
@@ -157,8 +165,12 @@ public int peek() {
 ```
 
 ---
-
-### Queues
+## QUEUES
+---
+### Leetcode
+1. [Number of Students Unable to Eat Lunch](https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/) - Easy
+2. [Dota2 Senate](https://leetcode.com/problems/dota2-senate/) - Medium
+---
 
 #### Description
 A queue is a data structure that follows the First In, First Out (FIFO) principle. The first person to enter the queue is the first person to be served. Examples of queues in the real world include lines at the bank and print jobs where multiple documents are handled on a first-come, first-served basis.
@@ -199,6 +211,16 @@ public int dequeue() {
 }   
 ```
 
+---
+## SLIDING WINDOW
+---
+###Leetcode
+1. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) - Easy
+2. [Contains Duplicate II (Fixed Size)](https://leetcode.com/problems/contains-duplicate-ii/) - Easy
+3. [Longest Substring Without Repeating Characters (Variable Size)](https://leetcode.com/problems/longest-substring-without-repeating-characters/) - Medium
+4. [Longest Repeating Character Replacement (Variable Size)](https://leetcode.com/problems/longest-repeating-character-replacement/) - Medium
+5. [Number of Sub Arrays of Size K and Avg Greater… (Fixed Size)](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/) - Medium
+6. [Minimum Size Subarray Sum (Variable Size)](https://leetcode.com/problems/minimum-size-subarray-sum/) - Medium
 ---
 
 ### Sliding Window (Fixed Size)
@@ -299,8 +321,16 @@ Find the minimum length subarray where the sum is greater than or equal to the t
     ```
 
 ---
-
-### Two Pointers
+## TWO POINTERS
+---
+### Leetcode
+1. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) - Easy
+2. [Two Sum II Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) - Medium
+3. [3Sum](https://leetcode.com/problems/3sum/) - Medium
+4. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) - Medium
+5. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
+6. [Remove Duplicates From Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) - Medium
+---
 
 #### Description
 The two pointers technique involves using two pointers to iterate through an array or list. This technique is versatile and can solve various problems such as finding pairs with specific properties, reversing arrays, and detecting palindromes.
@@ -346,8 +376,16 @@ Given a sorted input array, return the two indices of two elements that sum up t
     ```
 
 ---
-
-### Prefix Sum
+## PREFIX SUM
+---
+### Leetcode
+1. [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) - Easy
+2. [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) - Easy
+3. [Find the Highest Altitude](https://leetcode.com/problems/find-the-highest-altitude/) - Easy
+4. [Range Sum Query 2D Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) - Medium
+5. [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) - Medium
+6. [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) - Medium
+---
 
 #### Description
 Prefix sums are useful for quickly calculating the sum of elements in a subarray. By precomputing the cumulative sums of elements, you can answer range sum queries efficiently.
@@ -378,7 +416,16 @@ Given an array, build a prefix sum array where each element at index `i` is the 
     ```
 
 ---
-## LINKED LISTS
+## LINKED LIST
+---
+### Leetcode
+1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
+2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
+3. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
+4. [Reorder List](https://leetcode.com/problems/reorder-list/) - Medium
+5. [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) - Medium
+6. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
+7. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
 ---
 
 ### Singly Linked Lists
@@ -505,6 +552,15 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
 
 ---
 ## HASHING
+---
+### Leetcode
+1. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) - Easy
+2. [Two Sum](https://leetcode.com/problems/two-sum/) - Easy
+3. [LRU Cache](https://leetcode.com/problems/lru-cache/) - Medium
+4. [Group Anagrams](https://leetcode.com/problems/group-anagrams/) - Medium
+5. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) - Medium
+6. [Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/) - Medium
+7. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) - Medium
 ---
 
 ### Hash Usage
@@ -707,6 +763,18 @@ When the array becomes half full, double the array size and rehash all existing 
 
 ---
 ## SORTING
+---
+### Leetcode
+#### Insertion Sort
+1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
+#### Merge Sort
+1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
+2. [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) - Hard
+#### Quick Sort
+1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
+2. [Kth Largest Element In An Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
+#### Bucket Sort
+1. [Sort Colors](https://leetcode.com/problems/sort-colors/) - Medium
 ---
 
 ### Insertion Sort
