@@ -1,7 +1,7 @@
 # Data-Structures-Algorithms
 
 ---
-# ARRAYS
+## ARRAYS
 ---
 
 ### Static Arrays
