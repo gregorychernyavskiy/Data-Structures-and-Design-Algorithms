@@ -406,7 +406,8 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 5. [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) - Medium
 
 ---
-
+## LINKED LISTS
+---
 ### Singly Linked Lists
 
 #### Description
@@ -497,7 +498,7 @@ Deletion involves updating the `next` pointer of the previous node and the `prev
 
 ---
 
-### Fast and Slow Pointers
+### Fast and Slow Pointers (DESIGN)
 
 #### Description
 The fast and slow pointer technique involves using two pointers that move at different speeds to solve various problems in linked lists, such as finding the middle of a list or detecting cycles.
