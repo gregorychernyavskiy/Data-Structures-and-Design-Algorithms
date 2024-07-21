@@ -156,11 +156,6 @@ public int peek() {
 }
 ```
 
-#### Suggested Problems
-1. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) - Easy
-2. [Min Stack](https://leetcode.com/problems/min-stack/) - Medium
-3. [Baseball Game](https://leetcode.com/problems/baseball-game/) - Easy
-
 ---
 
 ### Queues
@@ -204,9 +199,7 @@ public int dequeue() {
 }   
 ```
 
-#### Suggested Problems
-1. [Number of Students Unable to Eat Lunch](https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/) - Easy
-2. [Implement Stack Using Queues](https://leetcode.com/problems/implement-stack-using-queues/) - Easy
+---
 
 ### Sliding Window (Fixed Size)
 
@@ -254,10 +247,6 @@ Given an array, return true if there are two elements within a window of size `k
         return false;
     }
     ```
-
-#### Suggested Problems
-1. [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/) - Easy
-2. [Number of Subarrays of Size K and Avg Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/) - Medium
 
 ---
 
@@ -309,11 +298,6 @@ Find the minimum length subarray where the sum is greater than or equal to the t
     }
     ```
 
-#### Suggested Problems
-1. [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) - Medium
-2. [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) - Medium
-3. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) - Medium
-
 ---
 
 ### Two Pointers
@@ -361,14 +345,6 @@ Given a sorted input array, return the two indices of two elements that sum up t
     }
     ```
 
-#### Suggested Problems
-1. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) - Easy
-2. [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) - Medium
-3. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
-4. [Remove Duplicates From Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) - Medium
-5. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) - Medium
-6. [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) - Hard
-
 ---
 
 ### Prefix Sum
@@ -401,27 +377,8 @@ Given an array, build a prefix sum array where each element at index `i` is the 
     }
     ```
 
-#### Suggested Problems
-1. [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) - Medium
-2. [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) - Easy
-3. [Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) - Medium
-4. [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) - Easy
-5. [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) - Medium
-
 ---
 ## LINKED LISTS
----
-### Leetcode
-### Singly Linked List
-1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
-2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
-3. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
-4. [Reorder List](https://leetcode.com/problems/reorder-list/) - Medium
-5. [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) - Medium
-
-### Singly Linked List
-1. 6. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
-2. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
 ---
 
 ### Singly Linked Lists
@@ -474,10 +431,6 @@ Deleting a node involves updating the `next` pointer of the previous node to ski
     head.next = head.next.next;
     ```
 
-#### Suggested Problems
-1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
-2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
-
 ---
 
 ### Doubly Linked Lists
@@ -507,10 +460,6 @@ Deletion involves updating the `next` pointer of the previous node and the `prev
         node.next.prev = node.prev;
     }
     ```
-
-#### Suggested Problems
-1. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
-2. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
 
 ---
 
@@ -553,13 +502,6 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
         return false;
     }
     ```
-
-#### Suggested Problems
-1. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
-2. [Find The Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) - Medium
-3. [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) - Easy
-4. [Maximum Twin Sum Of A Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) - Medium
-5. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) - Medium
 
 ---
 ## HASHING
