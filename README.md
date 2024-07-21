@@ -1,5 +1,7 @@
 # Data-Structures-Algorithms
 
+---
+
 ### Static Arrays
 
 #### Description
@@ -67,6 +69,8 @@ public void removeMiddle(int[] arr, int i, int length) {
 1. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
 2. [Remove Element](https://leetcode.com/problems/remove-element/) - Easy
 
+---
+
 ### Dynamic Arrays
 
 #### Description
@@ -109,6 +113,8 @@ public void resize() {
 #### Suggested Problems
 1. [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/) - Easy
 
+---
+
 ### Stacks
 
 #### Description
@@ -149,6 +155,8 @@ public int peek() {
 1. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) - Easy
 2. [Min Stack](https://leetcode.com/problems/min-stack/) - Medium
 3. [Baseball Game](https://leetcode.com/problems/baseball-game/) - Easy
+
+---
 
 ### Queues
 
