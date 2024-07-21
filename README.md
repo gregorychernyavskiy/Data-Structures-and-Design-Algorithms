@@ -541,3 +541,206 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
 3. [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) - Easy
 4. [Maximum Twin Sum Of A Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) - Medium
 5. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) - Medium
+
+---
+
+### Insertion Sort
+
+#### Description
+Insertion sort is a simple sorting algorithm that builds the final sorted array one item at a time. It is much like sorting playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
+
+#### Concept
+
+- **Algorithm:**
+    1. Iterate from the second element to the end of the array.
+    2. Compare the current element (key) to its predecessor.
+    3. If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.
+
+- **Code Example:**
+    ```java
+    public static int[] insertionSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int j = i - 1;
+            while (j >= 0 && arr[j + 1] < arr[j]) {
+                int tmp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = tmp;
+                j--;
+            }
+        }
+        return arr;
+    }
+    ```
+
+- **Stability:**
+    Insertion sort is a stable sorting algorithm, meaning it maintains the relative order of equal elements.
+
+- **Time Complexity:**
+    - Best Case: \(O(n)\) (when the array is already sorted)
+    - Average and Worst Case: \(O(n^2)\)
+
+---
+
+### Merge Sort
+
+#### Description
+Merge sort is a divide-and-conquer algorithm that divides the array into two halves, recursively sorts them, and then merges the sorted halves to produce the sorted array.
+
+#### Concept
+
+- **Algorithm:**
+    1. Divide the array into two halves.
+    2. Recursively sort each half.
+    3. Merge the two halves to form a sorted array.
+
+- **Code Example:**
+    ```java
+    public static int[] mergeSort(int[] arr, int l, int r) {
+        if (l < r) {
+            int m = (l + r) / 2;
+            mergeSort(arr, l, m);
+            mergeSort(arr, m + 1, r);
+            merge(arr, l, m, r);
+        }
+        return arr;
+    }
+
+    public static void merge(int[] arr, int l, int m, int r) {
+        int length1 = m - l + 1;
+        int length2 = r - m;
+
+        int[] L = new int[length1];
+        int[] R = new int[length2];
+
+        for (int i = 0; i < length1; i++) {
+            L[i] = arr[l + i];
+        }
+        for (int j = 0; j < length2; j++) {
+            R[j] = arr[m + 1 + j];
+        }
+
+        int i = 0, j = 0, k = l;
+        while (i < length1 && j < length2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < length1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < length2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+    ```
+
+- **Stability:**
+    Merge sort is a stable sorting algorithm.
+
+- **Time Complexity:**
+    - Best, Average, and Worst Case: \(O(n \log n)\)
+
+---
+
+### Quick Sort
+
+#### Description
+Quick sort is a divide-and-conquer algorithm that picks an element as a pivot and partitions the array around the pivot. The key process in quicksort is the partition process, which ensures that the pivot is in its correct position.
+
+#### Concept
+
+- **Algorithm:**
+    1. Pick a pivot element.
+    2. Partition the array around the pivot such that elements less than the pivot are on the left and elements greater than the pivot are on the right.
+    3. Recursively apply the above steps to the sub-arrays.
+
+- **Code Example:**
+    ```java
+    public static int[] quickSort(int[] arr, int s, int e) {
+        if (e - s + 1 <= 1) {
+            return arr;
+        }
+
+        int pivot = arr[e];
+        int left = s;
+
+        for (int i = s; i < e; i++) {
+            if (arr[i] < pivot) {
+                int tmp = arr[left];
+                arr[left] = arr[i];
+                arr[i] = tmp;
+                left++;
+            }
+        }
+
+        arr[e] = arr[left];
+        arr[left] = pivot;
+
+        quickSort(arr, s, left - 1);
+        quickSort(arr, left + 1, e);
+
+        return arr;
+    }
+    ```
+
+- **Stability:**
+    Quick sort is not a stable sorting algorithm.
+
+- **Time Complexity:**
+    - Best and Average Case: \(O(n \log n)\)
+    - Worst Case: \(O(n^2)\)
+
+---
+
+### Bucket Sort
+
+#### Description
+Bucket sort is a distribution sort that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or recursively applying the bucket sort.
+
+#### Concept
+
+- **Algorithm:**
+    1. Create an empty array of buckets.
+    2. Scatter the elements from the input array into the appropriate buckets.
+    3. Sort each non-empty bucket.
+    4. Gather the sorted elements from each bucket.
+
+- **Code Example:**
+    ```java
+    public static int[] bucketSort(int[] arr) {
+        int[] counts = {0, 0, 0}; // Assuming arr contains only 0, 1, or 2
+
+        for (int num: arr) {
+            counts[num] += 1;
+        }
+
+        int i = 0;
+        for (int n = 0; n < counts.length; n++) {
+            for (int j = 0; j < counts[n]; j++) {
+                arr[i] = n;
+                i++;
+            }
+        }
+
+        return arr;
+    }
+    ```
+
+- **Stability:**
+    Bucket sort is not stable as it overwrites the original array.
+
+- **Time Complexity:**
+    - Best, Average, and Worst Case: \(O(n)\) (assuming uniform distribution)
+
+---
