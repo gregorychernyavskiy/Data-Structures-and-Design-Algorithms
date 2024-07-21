@@ -420,7 +420,7 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 6. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
 7. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
 ---
-### DESIGN LINKED LISTS
+### LINKED LISTS (DESIGN LEVEL)
 ---
 #### Fast and Slow Pointers
 1. [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) - Easy
@@ -1092,7 +1092,7 @@ This involves using a binary search algorithm to guess the target within the pro
 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) - Medium
 2. [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) - Medium
 ---
-### DESIGN TREES
+### TREES (DESIGN LEVEL)
 ---
 #### Trie
 1. [Implement Trie Prefix Tree](https://leetcode.com/problems/implement-trie-prefix-tree/) - Medium
@@ -1690,7 +1690,7 @@ Visit the left subtree, the right subtree, and then the root node using two stac
 3. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
 4. [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) - Medium
 ---
-### DESIGN HEAPS
+### HEAPS (DESIGN LEVEL)
 ---
 #### Two Heaps
 1. [Find Median From Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) - Hard
@@ -1907,7 +1907,7 @@ Maintain two heaps such that the max-heap contains the smaller half of the numbe
 2. [Subsets](https://leetcode.com/problems/subsets/) - Medium
 3. [Combination Sum](https://leetcode.com/problems/combination-sum/) - Medium
 ---
-### Backtracking+
+### BACKTRACKING (DESIGN LEVEL)
 ---
 #### Subsets
 1. [Subsets](https://leetcode.com/problems/subsets/) - Medium
@@ -2105,7 +2105,7 @@ Use backtracking to explore all possible permutations by swapping elements.
     - **Explanation:** There are \(n!\) permutations, and generating each permutation takes \(O(n)\) time.
 
 ---
-## Graphs
+## GRAPHS
 ---
 #### Matrix DFS
 1. [Number of Islands](https://leetcode.com/problems/number-of-islands/) - Medium
@@ -2609,7 +2609,7 @@ Topological sort can be implemented using DFS. Visit all nodes, and for each nod
   - **Explanation:** Each vertex and each edge is processed exactly once.
 
 ---
-## Bit Manipulation
+## BIT MANIPULATION
 ---
 1. [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) - Easy
 2. [Counting Bits](https://leetcode.com/problems/counting-bits/) - Easy
