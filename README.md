@@ -1094,12 +1094,6 @@ This involves using a binary search algorithm to guess the target within the pro
 1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) - Medium
 2. [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) - Medium
 
-### Heaps
-1. [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) - Easy
-2. [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) - Easy
-3. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
-4. [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) - Medium
-
 ---
 
 ### Binary Tree
@@ -1669,6 +1663,12 @@ Visit the left subtree, the right subtree, and then the root node using two stac
 ---
 ## HEAPS
 ---
+### Leetcode
+1. [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) - Easy
+2. [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) - Easy
+3. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
+4. [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) - Medium
+---
 
 ### Heap Properties
 
@@ -2058,7 +2058,23 @@ Use backtracking to explore all possible permutations by swapping elements.
     - **Explanation:** There are \(n!\) permutations, and generating each permutation takes \(O(n)\) time.
 
 ---
-## GRAPHS
+## Graphs
+---
+### Leetcode
+
+#### Matrix DFS
+1. [Number of Islands](https://leetcode.com/problems/number-of-islands/) - Medium
+2. [Max Area of Island](https://leetcode.com/problems/max-area-of-island/) - Medium
+
+#### Matrix BFS
+1. [Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/) - Medium
+2. [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) - Medium
+
+#### Adjacency List
+1. [Clone Graph](https://leetcode.com/problems/clone-graph/) - Medium
+2. [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/) - Medium
+3. [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/) - Medium
+4. [Number of Connected Components In An Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) - Medium
 ---
 
 ### Introduction to Graphs
