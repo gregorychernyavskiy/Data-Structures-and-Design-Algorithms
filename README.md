@@ -411,6 +411,19 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 ---
 ## LINKED LISTS
 ---
+### Leetcode
+### Singly Linked List
+1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
+2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
+3. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
+4. [Reorder List](https://leetcode.com/problems/reorder-list/) - Medium
+5. [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) - Medium
+
+### Singly Linked List
+1. 6. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
+2. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
+---
+
 ### Singly Linked Lists
 
 #### Description
