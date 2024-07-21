@@ -765,14 +765,18 @@ When the array becomes half full, double the array size and rehash all existing 
 ## SORTING
 ---
 ### Leetcode
+
 #### Insertion Sort
 1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
+
 #### Merge Sort
 1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
 2. [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) - Hard
+
 #### Quick Sort
 1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
 2. [Kth Largest Element In An Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
+
 #### Bucket Sort
 1. [Sort Colors](https://leetcode.com/problems/sort-colors/) - Medium
 ---
@@ -979,6 +983,13 @@ Bucket sort is a distribution sort that works by distributing the elements of an
 ---
 ## BINARY SEARCH
 ---
+### Leetcode
+1. [Binary Search](https://leetcode.com/problems/binary-search/) - Easy
+2. [Guess Number Higher Or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/) - Easy
+3. [First Bad Version](https://leetcode.com/problems/first-bad-version/) - Easy
+4. [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) - Medium
+5. [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) - Medium
+---
 
 ### Binary Search Array
 
@@ -1062,6 +1073,33 @@ This involves using a binary search algorithm to guess the target within the pro
 
 ---
 ## TREES
+---
+
+#### Binary Search Tree
+1. [Search In A Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/) - Easy
+2. [Insert into a Binary Search Tree](https://leetcode.com/problems/insert-into-a-binary-search-tree/) - Medium
+3. [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/) - Medium
+
+#### Depth-First Search
+1. [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/) - Easy
+2. [Kth Smallest Element In a Bst](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) - Medium
+3. [Construct Binary Tree From Preorder And Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) - Medium
+4. [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/) (both DFS and BFS) - Easy
+5. [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) (both DFS and BFS) - Easy
+6. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) - Easy
+7. [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/) (both DFS and BFS) - Easy
+8. [Same Tree](https://leetcode.com/problems/same-tree/) - Easy
+
+#### Breadth-First Search
+1. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) - Medium
+2. [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) - Medium
+
+### Heaps
+1. [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) - Easy
+2. [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) - Easy
+3. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
+4. [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) - Medium
+
 ---
 
 ### Binary Tree
