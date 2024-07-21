@@ -1592,3 +1592,207 @@ Visit the left subtree, the right subtree, and then the root node using two stac
  
 ---
 
+### Heap Properties
+
+#### Description
+A heap is a specialized, tree-based data structure that is a complete binary tree. It implements the priority queue abstract data type, where elements are added and removed based on their priority.
+
+#### Types of Heaps
+1. **Min Heap:** The smallest value is at the root, and each parent node is smaller than or equal to its child nodes.
+2. **Max Heap:** The largest value is at the root, and each parent node is larger than or equal to its child nodes.
+
+#### Properties
+
+**Structure Property:**
+A binary heap is a complete binary tree, meaning every level of the tree is fully filled except possibly for the last level, which is filled from left to right.
+
+**Order Property:**
+- **Min Heap:** Every node's value is less than or equal to the values of its children.
+- **Max Heap:** Every node's value is greater than or equal to the values of its children.
+
+**Array Representation:**
+Heaps are typically implemented using arrays. The left child of a node at index `i` is at index `2*i`, the right child is at index `2*i + 1`, and the parent is at index `i/2`.
+
+- **Code Example:**
+    ```java
+    public class Heap {
+        List<Integer> heap;
+
+        public Heap() {
+            heap = new ArrayList<>();
+            heap.add(0); // Initialize heap with a dummy value at index 0
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Insert, Delete: \(O(\log n)\)**
+    - **Explanation:** Operations involve percolating up or down the tree, taking logarithmic time.
+
+---
+
+### Push and Pop
+
+#### Description
+Push and pop operations in a heap maintain the heap properties by ensuring that the structure and order properties are intact after each operation.
+
+#### Operations
+
+**Push:**
+To insert an element into the heap, add the element at the end of the array and percolate it up to restore the heap order property.
+
+- **Code Example:**
+    ```java
+    public void push(int val) {
+        heap.add(val);
+        int i = heap.size() - 1;
+
+        // Percolate up
+        while (i > 1 && heap.get(i) < heap.get(i / 2)) {
+            int tmp = heap.get(i);
+            heap.set(i, heap.get(i / 2));
+            heap.set(i / 2, tmp);
+            i = i / 2;
+        }
+    }
+    ```
+
+**Pop:**
+To remove the root element (minimum in a min-heap or maximum in a max-heap), replace it with the last element in the array and percolate it down to restore the heap order property.
+
+- **Code Example:**
+    ```java
+    public int pop() {
+        if (heap.size() == 1) {
+            // Handle empty heap case
+            throw new NoSuchElementException("Heap is empty");
+        }
+
+        int res = heap.get(1); // Root element
+        heap.set(1, heap.remove(heap.size() - 1)); // Move last element to root
+        int i = 1;
+
+        // Percolate down
+        while (2 * i < heap.size()) {
+            int child = 2 * i; // Left child
+            if (child + 1 < heap.size() && heap.get(child + 1) < heap.get(child)) {
+                child = child + 1; // Right child
+            }
+            if (heap.get(i) <= heap.get(child)) {
+                break;
+            }
+            int tmp = heap.get(i);
+            heap.set(i, heap.get(child));
+            heap.set(child, tmp);
+            i = child;
+        }
+        return res;
+    }
+    ```
+
+**Time Complexity:**
+- **Push, Pop: \(O(\log n)\)**
+    - **Explanation:** Both operations involve percolating up or down the tree, taking logarithmic time.
+
+---
+
+### Heapify
+
+#### Description
+Heapify is a process used to build a heap from an arbitrary array. It ensures that the array satisfies the heap properties.
+
+#### Operations
+
+**Heapify:**
+To build a heap, start from the last non-leaf node and percolate down each node to ensure the heap property is maintained.
+
+- **Code Example:**
+    ```java
+    public void heapify(ArrayList<Integer> arr) {
+        arr.add(arr.get(0)); // Move 0-th position to the end
+        heap = arr;
+        int cur = (heap.size() - 1) / 2;
+        while (cur > 0) {
+            int i = cur;
+            while (2 * i < heap.size()) {
+                if (2 * i + 1 < heap.size() && heap.get(2 * i + 1) < heap.get(2 * i) && heap.get(i) > heap.get(2 * i + 1)) {
+                    int tmp = heap.get(i);
+                    heap.set(i, heap.get(2 * i + 1));
+                    heap.set(2 * i + 1, tmp);
+                    i = 2 * i + 1;
+                } else if (heap.get(i) > heap.get(2 * i)) {
+                    int tmp = heap.get(i);
+                    heap.set(i, heap.get(2 * i));
+                    heap.set(2 * i, tmp);
+                    i = 2 * i;
+                } else {
+                    break;
+                }
+            }
+            cur--;
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Heapify: \(O(n)\)**
+    - **Explanation:** Although each percolate down operation takes \(O(\log n)\), the number of operations decreases exponentially, leading to a linear overall time complexity.
+
+---
+
+### Two Heaps
+
+#### Description
+Using two heaps (a min-heap and a max-heap) is a technique to efficiently solve problems like finding the median of a data stream. The max-heap stores the smaller half of the data, and the min-heap stores the larger half.
+
+#### Operations
+
+**Median Finder:**
+Maintain two heaps such that the max-heap contains the smaller half of the numbers, and the min-heap contains the larger half. The median is either the root of one of the heaps or the average of the roots.
+
+- **Code Example:**
+    ```java
+    import java.util.PriorityQueue;
+    import java.util.Collections;
+
+    public class MedianFinder {
+        PriorityQueue<Integer> small; // Max-heap
+        PriorityQueue<Integer> large; // Min-heap
+
+        public MedianFinder() {
+            small = new PriorityQueue<>(Collections.reverseOrder());
+            large = new PriorityQueue<>();
+        }
+
+        public void insert(int num) {
+            small.add(num);
+            if (!small.isEmpty() && !large.isEmpty() && small.peek() > large.peek()) {
+                large.add(small.poll());
+            }
+            if (small.size() > large.size() + 1) {
+                large.add(small.poll());
+            }
+            if (large.size() > small.size() + 1) {
+                small.add(large.poll());
+            }
+        }
+
+        public double getMedian() {
+            if (small.size() > large.size()) {
+                return small.peek();
+            } else if (large.size() > small.size()) {
+                return large.peek();
+            }
+            return (small.peek() + large.peek()) / 2.0;
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Insert: \(O(\log n)\)**
+    - **Explanation:** Insertion involves adding the element to one of the heaps and possibly rebalancing, taking logarithmic time.
+- **Get Median: \(O(1)\)**
+    - **Explanation:** Retrieving the median is a constant time operation since it involves accessing the root of the heaps.
+
+---
+
