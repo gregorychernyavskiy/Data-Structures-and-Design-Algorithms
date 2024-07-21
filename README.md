@@ -1063,9 +1063,7 @@ Visit all nodes level by level using a queue to keep track of the nodes at the c
     ```
 
 **Time Complexity:**
-- **Traversal: \(
-
-O(n)\)**
+- **Traversal: \(O(n)\)**
     - **Explanation:** Each node is visited exactly once.
 
 ---
