@@ -2782,7 +2782,7 @@ Final count is `4`.
 ---
 ## DYNAMIC PROGRAMMING (DP)
 ---
-#### 2-Dimension DP
+#### 1-Dimension DP
 1. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) - Easy
 2. [House Robber](https://leetcode.com/problems/house-robber/) - Medium
 
