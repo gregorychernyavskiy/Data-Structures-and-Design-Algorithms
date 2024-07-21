@@ -2212,10 +2212,6 @@ Perform BFS to find the shortest path from a source to a destination.
         return length; // Path not found
     }
     ```
-    **Time Complexity:**
-- **BFS: \(O(n \cdot m)\)**
-  - **Explanation:** Each cell in the \(n \times m\) grid is visited at most once.
- 
 
 **Time Complexity:**
 - **DFS and BFS: \(O(V + E)\)**
