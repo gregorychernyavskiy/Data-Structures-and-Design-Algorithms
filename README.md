@@ -744,3 +744,364 @@ Bucket sort is a distribution sort that works by distributing the elements of an
     - Best, Average, and Worst Case: \(O(n)\) (assuming uniform distribution)
 
 ---
+
+### Binary Search Array
+
+#### Description
+Binary search is an efficient way of searching for elements within a sorted array. Given a sorted array and a target value, binary search divides the array into halves to eliminate half of the elements from the search at each step, making the search process faster.
+
+#### Operations
+
+**Binary Search:**
+Binary search involves finding the middle element of the current subarray and comparing it to the target value. Depending on the comparison, the search continues in the left or right half of the subarray.
+
+- **Code Example:**
+    ```java
+    public static int binarySearch(int[] arr, int target) {
+        int L = 0, R = arr.length - 1;
+        int mid;
+
+        while (L <= R) {
+            mid = L + (R - L) / 2;
+            if (target > arr[mid]) {
+                L = mid + 1;
+            } else if (target < arr[mid]) {
+                R = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+    ```
+
+**Time Complexity:**
+- **Best, Average, and Worst Case: \(O(\log n)\)**
+    - **Explanation:** Each step in binary search reduces the search space by half, leading to a logarithmic time complexity.
+
+---
+
+### Binary Search Range
+
+#### Description
+Binary search range involves finding a target value within a given range using the binary search algorithm. This variation is useful when the search range is provided instead of a specific target.
+
+#### Operations
+
+**Binary Search Range:**
+This involves using a binary search algorithm to guess the target within the provided range.
+
+- **Code Example:**
+    ```java
+    public static int isCorrect(int n) {
+        if (n > 10) {
+            return 1;
+        } else if (n < 10) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    public static int binarySearch(int low, int high) {
+        int mid;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+
+            if (isCorrect(mid) > 0) {
+                high = mid - 1;
+            } else if (isCorrect(mid) < 0) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+    ```
+
+**Time Complexity:**
+- **Best, Average, and Worst Case: \(O(\log n)\)**
+    - **Explanation:** Similar to standard binary search, each step reduces the search space by half.
+
+---
+
+### Binary Tree
+
+#### Description
+A binary tree is a data structure where each node has at most two children, referred to as the left child and the right child. It starts with a root node, and each node in the tree has zero, one, or two child nodes.
+
+#### Operations
+
+**Node Definition:**
+A binary tree node contains a value and pointers to its left and right children.
+
+- **Code Example:**
+    ```java
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(int val) {
+            this.val = val;
+            left = null;
+            right = null;
+        }
+    }
+    ```
+
+**Properties:**
+- **Root Node:** The topmost node in the tree.
+- **Leaf Node:** A node with no children.
+- **Height:** The length of the longest path from the root to a leaf.
+- **Depth:** The length of the path from a node to the root.
+
+**Time Complexity:**
+- **Traversal: \(O(n)\)**
+    - **Explanation:** Each node is visited exactly once.
+
+---
+
+### Binary Search Tree (BST)
+
+#### Description
+A binary search tree (BST) is a binary tree with the additional property that for any node, the left subtree contains values less than the node, and the right subtree contains values greater than the node. This property makes BSTs useful for efficient searching, insertion, and deletion operations.
+
+#### Operations
+
+**BST Search:**
+To search for a value, compare it with the root. If the value is smaller, search the left subtree; if larger, search the right subtree.
+
+- **Code Example:**
+    ```java
+    public boolean search(TreeNode root, int target) {
+        if (root == null) {
+            return false;
+        }
+        if (target > root.val) {
+            return search(root.right, target);
+        } else if (target < root.val) {
+            return search(root.left, target);
+        } else {
+            return true;
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Best, Average Case: \(O(\log n)\)**
+    - **Explanation:** In a balanced BST, each comparison halves the search space.
+- **Worst Case: \(O(n)\)**
+    - **Explanation:** In a skewed BST, the tree behaves like a linked list.
+
+---
+
+### BST Insert and Remove
+
+#### Description
+Inserting and removing nodes in a BST involves maintaining the BST property after the operation.
+
+#### Operations
+
+**Insertion:**
+To insert a new node, traverse the tree to find the appropriate position and insert the node.
+
+- **Code Example:**
+    ```java
+    public TreeNode insert(TreeNode root, int val) {
+        if (root == null) {
+            return new TreeNode(val);
+        }
+        if (val > root.val) {
+            root.right = insert(root.right, val);
+        } else {
+            root.left = insert(root.left, val);
+        }
+        return root;
+    }
+    ```
+
+**Removal:**
+To remove a node, consider three cases: node has no children, node has one child, or node has two children.
+
+- **Code Example:**
+    ```java
+    public TreeNode remove(TreeNode root, int val) {
+        if (root == null) {
+            return null;
+        }
+        if (val > root.val) {
+            root.right = remove(root.right, val);
+        } else if (val < root.val) {
+            root.left = remove(root.left, val);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            } else {
+                TreeNode minNode = minValueNode(root.right);
+                root.val = minNode.val;
+                root.right = remove(root.right, minNode.val);
+            }
+        }
+        return root;
+    }
+
+    public TreeNode minValueNode(TreeNode root) {
+        TreeNode curr = root;
+        while (curr.left != null) {
+            curr = curr.left;
+        }
+        return curr;
+    }
+    ```
+
+**Time Complexity:**
+- **Best, Average Case: \(O(\log n)\)**
+    - **Explanation:** In a balanced BST, operations halve the search space.
+- **Worst Case: \(O(n)\)**
+    - **Explanation:** In a skewed BST, the tree behaves like a linked list.
+
+---
+
+### Depth-First Search (DFS)
+
+#### Description
+Depth-First Search (DFS) is a tree traversal algorithm that explores as far as possible along each branch before backtracking. It is typically implemented using recursion.
+
+#### Operations
+
+**Inorder Traversal:**
+Visit the left subtree, the root node, and then the right subtree.
+
+- **Code Example:**
+    ```java
+    public void inorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left);
+        System.out.println(root.val);
+        inorder(root.right);
+    }
+    ```
+
+**Preorder Traversal:**
+Visit the root node, the left subtree, and then the right subtree.
+
+- **Code Example:**
+    ```java
+    public void preorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.println(root.val);
+        preorder(root.left);
+        preorder(root.right);
+    }
+    ```
+
+**Postorder Traversal:**
+Visit the left subtree, the right subtree, and then the root node.
+
+- **Code Example:**
+    ```java
+    public void postorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.println(root.val);
+    }
+    ```
+
+**Time Complexity:**
+- **Traversal: \(O(n)\)**
+    - **Explanation:** Each node is visited exactly once.
+
+---
+
+### Breadth-First Search (BFS)
+
+#### Description
+Breadth-First Search (BFS) is a tree traversal algorithm that explores all nodes at the present depth level before moving on to nodes at the next depth level. It is typically implemented using a queue.
+
+#### Operations
+
+**BFS Traversal:**
+Visit all nodes level by level using a queue to keep track of the nodes at the current level.
+
+- **Code Example:**
+    ```java
+    public void bfs(TreeNode root) {
+        Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
+        if (root != null) {
+            queue.add(root);
+        }
+        int level = 0;
+        while (!queue.isEmpty()) {
+            System.out.print("level " + level + ": ");
+            int levelLength = queue.size();
+            for (int i = 0; i < levelLength; i++) {
+                TreeNode curr = queue.removeFirst();
+                System.out.print(curr.val + " ");
+                if (curr.left != null) {
+                    queue.add(curr.left);
+                }
+                if (curr.right != null) {
+                    queue.add(curr.right);
+                }
+            }
+            level++;
+            System.out.println();
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Traversal: \(
+
+O(n)\)**
+    - **Explanation:** Each node is visited exactly once.
+
+---
+
+### BST Sets and Maps
+
+#### Description
+Sets and Maps are interfaces that can be implemented using trees, providing efficient \(O(\log n)\) operations.
+
+#### Operations
+
+**Set:**
+A set ensures that all values are unique and sorted.
+
+- **Code Example:**
+    ```java
+    TreeSet<Integer> set = new TreeSet<>();
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    ```
+
+**Map:**
+A map stores key-value pairs and is sorted by the key.
+
+- **Code Example:**
+    ```java
+    TreeMap<String, Integer> map = new TreeMap<>();
+    map.put("Alice", 123);
+    map.put("Brad", 345);
+    map.put("Collin", 678);
+    ```
+
+**Time Complexity:**
+- **Insertion and Lookup: \(O(\log n)\)**
+    - **Explanation:** Tree-based sets and maps maintain balance, ensuring logarithmic operations for insertion and lookup.
+
+---
+
