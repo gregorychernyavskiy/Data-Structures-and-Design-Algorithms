@@ -116,6 +116,9 @@ public void resize() {
    arr = newArr;
 }  
 ```
+**Time Complexity:**
+- **Insert, Search, and Delete:** \(O(1)\) on average for hash maps and hash sets.
+   - **Explanation:** Hash maps and hash sets provide average-case constant time complexity for these operations due to efficient hashing and handling of collisions.
 
 ---
 ## STACKS
@@ -161,6 +164,9 @@ public int peek() {
     return stack.get(stack.size() - 1);
 }
 ```
+**Time Complexity:**
+- **Push, Pop, Peek:** O(1)
+   - **Explanation:** These operations are performed at the top of the stack and do not require iteration through the elements, resulting in constant time complexity.
 
 ---
 ## QUEUES
@@ -207,6 +213,9 @@ public int dequeue() {
     return val;
 }   
 ```
+**Time Complexity:**
+- **Enqueue, Dequeue:** O(1)
+   - **Explanation:** These operations involve adding or removing elements from the ends of the queue, which can be done in constant time without iterating through other elements.
 
 ---
 ## SLIDING WINDOW
@@ -315,6 +324,13 @@ Find the minimum length subarray where the sum is greater than or equal to the t
         return length;
     }
     ```
+**Time Complexity:**
+- **Fixed Size Sliding Window Operations:** O(n)
+  - **Explanation:** The algorithm maintains a window of fixed size and iterates through the array once, ensuring linear time complexity.
+
+- **Variable Size Sliding Window Operations:** O(n)
+  - **Explanation:** The algorithm adjusts the window size dynamically while iterating through the array once, resulting in linear time complexity.
+
 
 ---
 ## TWO POINTERS
@@ -369,6 +385,12 @@ Given a sorted input array, return the two indices of two elements that sum up t
         return null;
     }
     ```
+**Time Complexity:**
+- **Valid Palindrome:** O(n)
+  - **Explanation:** The algorithm iterates through the string once, comparing characters from both ends.
+  - 
+- **Two Sum II:** O(n)
+  - **Explanation:** The algorithm uses two pointers to iterate through the array, ensuring each element is checked once.
 
 ---
 ## PREFIX SUM
@@ -408,6 +430,11 @@ Given an array, build a prefix sum array where each element at index `i` is the 
         }
     }
     ```
+**Time Complexity:**
+- **Building the Prefix Sum Array:** O(n)
+  - **Explanation:** The algorithm iterates through the array once to compute the cumulative sums.
+- **Range Sum Query:** O(1)
+  - **Explanation:** The range sum query uses the precomputed prefix sums to answer the query in constant time.
 
 ---
 ## LINKED LISTS
@@ -551,6 +578,19 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
         return false;
     }
     ```
+**Time Complexity:**
+- **Creating a Singly Linked List:** O(1)
+  - **Explanation:** Creating each `ListNode` object is a constant time operation.
+- **Traversal:** O(n)
+  - **Explanation:** The algorithm iterates through each node in the list.
+- **Appending:** O(n)
+  - **Explanation:** The algorithm must traverse the list to find the last node.
+- **Deletion:** O(1) for deleting a known node, O(n) for finding and deleting a node
+  - **Explanation:** Updating pointers is a constant time operation, but finding the node to delete can take linear time.
+- **Finding the Middle:** O(n)
+  - **Explanation:** The algorithm iterates through the list with two pointers.
+- **Cycle Detection:** O(n)
+  - **Explanation:** The algorithm iterates through the list with two pointers.
 
 ---
 ## HASHING
