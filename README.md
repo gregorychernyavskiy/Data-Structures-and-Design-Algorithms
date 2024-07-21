@@ -546,6 +546,8 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
 5. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) - Medium
 
 ---
+## HASHING
+---
 
 ### Hash Usage
 
@@ -1992,6 +1994,8 @@ Use backtracking to explore all possible permutations by swapping elements.
     - **Explanation:** There are \(n!\) permutations, and generating each permutation takes \(O(n)\) time.
 
 ---
+## GRAPHS
+---
 
 ### Introduction to Graphs
 
@@ -2233,7 +2237,7 @@ Perform BFS to find the shortest path from a source to a destination.
 
 ---
 
-### Dijkstra's Algorithm
+### Dijkstra's Algorithm (DESIGN)
 
 #### Description
 Dijkstra's algorithm is used to find the shortest paths from a source vertex to all other vertices in a weighted graph. Unlike BFS, which works only for unweighted graphs, Dijkstra's algorithm can handle graphs with varying edge weights. It prioritizes finding the "lightest" path, i.e., the path with the smallest total weight.
@@ -2287,7 +2291,7 @@ Dijkstra's algorithm uses a min-heap to keep track of the next vertex to visit b
 
 ---
 
-### Prim's Algorithm
+### Prim's Algorithm (DESIGN)
 
 #### Description
 Prim's algorithm is used to find the minimum spanning tree (MST) of a weighted undirected graph. It starts from an arbitrary node and grows the MST by adding the smallest edge that connects a vertex in the MST to a vertex outside the MST.
@@ -2346,7 +2350,7 @@ Prim's algorithm uses a min-heap to select the edge with the smallest weight tha
 
 ---
 
-### Kruskal's Algorithm
+### Kruskal's Algorithm (DESIGN)
 
 #### Description
 Kruskal's algorithm is another method for finding the minimum spanning tree (MST) of a graph. It sorts all edges by weight and adds them one by one to the MST, skipping edges that would form a cycle, until the MST includes all vertices.
@@ -2413,7 +2417,7 @@ Kruskal's algorithm uses a union-find data structure to detect cycles and manage
 
 ---
 
-### Topological Sort
+### Topological Sort (DESIGN)
 
 #### Description
 Topological sort is a linear ordering of vertices in a directed acyclic graph (DAG) such that for every directed edge \(u \rightarrow v\), vertex \(u\) comes before \(v\). It is used in scenarios where dependencies need to be resolved, such as task scheduling.
@@ -2458,8 +2462,10 @@ Topological sort can be implemented using DFS. Visit all nodes, and for each nod
   - **Explanation:** Each vertex and each edge is processed exactly once.
 
 ---
+## Bit Manipulation
+---
 
-### Bit Manipulation
+### Bit Operations
 
 #### Description
 Bit manipulation is a technique used in computer science to directly operate on the binary representation of integers. It involves using bitwise operators to perform operations at the bit level. Bit manipulation is often used to optimize algorithms and solve problems more efficiently.
@@ -2621,6 +2627,8 @@ Final count is `4`.
   - **Explanation:** Each operation iterates over the bits of the integer, resulting in logarithmic time complexity based on the number of bits.
 
 ---
+## Dynamic Programming (DP)
+---
 
 ### 1-Dimension DP
 
@@ -2718,7 +2726,7 @@ Two-dimensional dynamic programming (2D DP) extends 1D DP to solve problems that
 
 ---
 
-### 0/1 Knapsack
+### 0/1 Knapsack (DESIGN)
 
 #### Description
 The 0/1 knapsack problem involves selecting items with given weights and values to maximize the total value without exceeding the weight limit. Each item can be included or excluded (0/1).
@@ -2750,7 +2758,7 @@ Use a 2D array to store the maximum value at each n-th item and capacity c.
 
 ---
 
-### Unbounded Knapsack
+### Unbounded Knapsack (DESIGN)
 
 #### Description
 The unbounded knapsack problem allows for an unlimited number of each item. The goal is to maximize the total value without exceeding the weight limit.
@@ -2779,7 +2787,7 @@ Use a 1D array to store the maximum value at each capacity c, iterating through 
 
 ---
 
-### Longest Common Subsequence (LCS)
+### Longest Common Subsequence (LCS) (DESIGN)
 
 #### Description
 The longest common subsequence problem finds the longest subsequence present in both given sequences where order is preserved.
@@ -2811,7 +2819,7 @@ Use a 2D array to store the lengths of LCS for substrings.
 
 ---
 
-### Palindromes
+### Palindromes (DESIGN)
 
 #### Description
 Dynamic programming can be used to solve problems related to palindromes, such as finding the longest palindromic substring or counting palindromic substrings.
