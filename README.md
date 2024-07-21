@@ -544,6 +544,205 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
 
 ---
 
+### Hash Usage
+
+#### Description
+Hash maps and hash sets are fundamental data structures used for fast access and retrieval of data. They are based on hashing, which allows for nearly constant time complexity for search, insert, and delete operations. Hash maps store key-value pairs, while hash sets store unique elements.
+
+#### Operations
+
+**Contains Duplicate:**
+Given an array, return true if any value appears at least twice in the array, otherwise return false.
+
+- **Code Example:**
+    ```java
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
+    ```
+
+**Two Sum:**
+Given an array of integers and a target value, return the indices of the two numbers that add up to the target.
+
+- **Code Example:**
+    ```java
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+    ```
+
+**LRU Cache:**
+An LRU (Least Recently Used) Cache is a data structure that stores a limited number of items and evicts the least recently used item when the limit is exceeded.
+
+- **Code Example:**
+    ```java
+    class LRUCache {
+        private int capacity;
+        private Map<Integer, Integer> map;
+        private LinkedList<Integer> order;
+
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.map = new HashMap<>();
+            this.order = new LinkedList<>();
+        }
+
+        public int get(int key) {
+            if (!map.containsKey(key)) return -1;
+            order.remove((Integer) key);
+            order.addFirst(key);
+            return map.get(key);
+        }
+
+        public void put(int key, int value) {
+            if (map.containsKey(key)) {
+                order.remove((Integer) key);
+            } else if (map.size() == capacity) {
+                int leastUsed = order.removeLast();
+                map.remove(leastUsed);
+            }
+            order.addFirst(key);
+            map.put(key, value);
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Insert, Search, and Delete: \(O(1)\)**
+    - **Explanation:** Hash maps and hash sets provide average-case constant time complexity for these operations due to efficient hashing and handling of collisions.
+
+---
+
+### Hash Implementation
+
+#### Description
+Hash maps are typically implemented using arrays under the hood, combined with a hash function to map keys to array indices. Collisions are handled using techniques like chaining or open addressing.
+
+#### Operations
+
+**Hash Function:**
+A hash function converts a key into an integer index that maps to an array position. This is done by summing the ASCII values of the characters in the key and taking the modulo with the array size.
+
+- **Code Example:**
+    ```java
+    public int hash(String key) {
+        int index = 0;
+        for (int i = 0; i < key.length(); i++) {
+            index += (int) key.charAt(i);
+        }
+        return index % this.capacity;
+    }
+    ```
+
+**Insert:**
+To insert a key-value pair, compute the hash of the key to determine the array index. Handle collisions using chaining or open addressing.
+
+- **Code Example:**
+    ```java
+    public void put(String key, String val) {
+        int index = this.hash(key);
+
+        while (true) {
+            if (this.map[index] == null) {
+                this.map[index] = new Pair(key, val);
+                this.size += 1;
+                if (this.size >= this.capacity / 2) {
+                    this.rehash();
+                }
+                return;       
+            } else if (this.map[index].key.equals(key)) {
+                this.map[index].val = val;
+                return;
+            }
+            index += 1;
+            index = index % this.capacity;
+        }    
+    }
+    ```
+
+**Get:**
+Retrieve a value by computing the hash of the key and checking the corresponding array index. Handle collisions by following the chain or probing for the key.
+
+- **Code Example:**
+    ```java
+    public String get(String key) {
+        int index = this.hash(key);
+        while (this.map[index] != null) {
+            if (this.map[index].key.equals(key)) {
+                return this.map[index].val;
+            }  
+            index += 1;
+            index = index % this.capacity;
+        }    
+        return null;
+    }
+    ```
+
+**Remove:**
+To remove a key-value pair, find the key and set the corresponding array index to null. Handle the hole created by rehashing subsequent entries.
+
+- **Code Example:**
+    ```java
+    public void remove(String key) {
+        if (this.get(key) == null) {
+            return;
+        }
+        
+        int index = this.hash(key);
+        while (true) {
+            if (this.map[index].key.equals(key)) {
+                this.map[index] = null;
+                this.size -= 1;
+                return;
+            }    
+            index += 1;
+            index = index % this.capacity;
+        }
+    }
+    ```
+
+**Rehashing:**
+When the array becomes half full, double the array size and rehash all existing entries to the new array.
+
+- **Code Example:**
+    ```java
+    public void rehash() {
+        this.capacity = 2 * this.capacity;
+        Pair[] newMap = new Pair[this.capacity];
+
+        Pair[] oldMap = this.map;
+        this.map = newMap;
+        this.size = 0;
+        for (Pair p : oldMap) {
+            if (p != null) {
+                this.put(p.key, p.val);
+            }
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Insert, Search, and Delete: \(O(1)\)**
+    - **Explanation:** With efficient hashing and collision resolution, these operations can be performed in constant time on average.
+- **Rehashing: \(O(n)\)**
+    - **Explanation:** Rehashing requires re-inserting all elements into a new larger array, which takes linear time.
+
+---
 ### Insertion Sort
 
 #### Description
@@ -1101,5 +1300,295 @@ A map stores key-value pairs and is sorted by the key.
 - **Insertion and Lookup: \(O(\log n)\)**
     - **Explanation:** Tree-based sets and maps maintain balance, ensuring logarithmic operations for insertion and lookup.
 
+---
+
+### Trie
+
+#### Description
+A trie, also known as a prefix tree, is a tree data structure used for storing a dynamic set or associative array where the keys are usually strings. Each node in the trie represents a single character of the key, and the path from the root to a node represents a prefix of the keys.
+
+#### Operations
+
+**Insert:**
+To insert a word, iterate through each character of the word. If the character does not exist, insert it into the trie. Mark the end of the word in the last node.
+
+- **Code Example:**
+    ```java
+    class TrieNode {
+        boolean word;
+        Map<Character, TrieNode> children = new HashMap<>();
+    }
+
+    public class Trie {
+        TrieNode root;
+
+        public Trie() {
+            root = new TrieNode();
+        }
+
+        public void insert(String word) {
+            TrieNode curr = root;
+            for (char c : word.toCharArray()) {
+                curr.children.putIfAbsent(c, new TrieNode());
+                curr = curr.children.get(c);
+            }
+            curr.word = true;
+        }
+    }
+    ```
+
+**Search:**
+To search for a word, iterate through each character of the word. If a character does not exist, return false. If all characters exist and the last node is marked as a word, return true.
+
+- **Code Example:**
+    ```java
+    public boolean search(String word) {
+        TrieNode curr = root;
+        for (char c : word.toCharArray()) {
+            if (!curr.children.containsKey(c)) {
+                return false;
+            }
+            curr = curr.children.get(c);
+        }
+        return curr.word;
+    }
+    ```
+
+**Starts With:**
+To check if there is any word that starts with a given prefix, iterate through each character of the prefix. If a character does not exist, return false. If all characters exist, return true.
+
+- **Code Example:**
+    ```java
+    public boolean startsWith(String prefix) {
+        TrieNode curr = root;
+        for (char c : prefix.toCharArray()) {
+            if (!curr.children.containsKey(c)) {
+                return false;
+            }
+            curr = curr.children.get(c);
+        }
+        return true;
+    }
+    ```
+
+**Time Complexity:**
+- **Insert, Search, and Starts With: \(O(m)\)**
+    - **Explanation:** Where \(m\) is the length of the word or prefix.
+
+---
+
+### Union-Find
+
+#### Description
+Union-Find, also known as Disjoint Set Union (DSU), is a data structure that keeps track of a set of elements partitioned into disjoint (non-overlapping) subsets. It supports two primary operations: union and find.
+
+#### Operations
+
+**Find:**
+Finds the root of the set containing the element. Uses path compression to make subsequent searches faster.
+
+- **Code Example:**
+    ```java
+    public int find(int n) {
+        int p = par.get(n);
+        while (p != par.get(p)) {
+            par.put(p, par.get(par.get(p)));
+            p = par.get(p);
+        }
+        return p;
+    }
+    ```
+
+**Union:**
+Joins two subsets into a single subset. Uses union by rank to keep the tree flat.
+
+- **Code Example:**
+    ```java
+    public boolean union(int n1, int n2) {
+        int p1 = find(n1), p2 = find(n2);
+        if (p1 == p2) {
+            return false;
+        }
+        if (rank.get(p1) > rank.get(p2)) {
+            par.put(p2, p1);
+        } else if (rank.get(p1) < rank.get(p2)) {
+            par.put(p1, p2);
+        } else {
+            par.put(p1, p2);
+            rank.put(p2, rank.get(p2) + 1);
+        }
+        return true;
+    }
+    ```
+
+**Time Complexity:**
+- **Find and Union: \(O(\alpha(n))\)**
+    - **Explanation:** \(\alpha(n)\) is the inverse Ackermann function, which is very slow-growing and practically constant for all reasonable \(n\).
+
+---
+
+### Segment Tree
+
+#### Description
+A segment tree is a data structure that allows for efficient range queries and updates. It is particularly useful for scenarios where there are multiple range queries and updates on an array.
+
+#### Operations
+
+**Build:**
+Constructs the segment tree from an array.
+
+- **Code Example:**
+    ```java
+    public static SegmentTree build(int[] nums, int L, int R) {
+        if (L == R) {
+            return new SegmentTree(nums[L], L, R);
+        }
+
+        int M = (L + R) / 2;
+        SegmentTree root = new SegmentTree(0, L, R);
+        root.left = build(nums, L, M);
+        root.right = build(nums, M + 1, R);
+        root.sum = root.left.sum + root.right.sum;
+        return root;
+    }
+    ```
+
+**Update:**
+Updates a value at a specific index and adjusts the tree accordingly.
+
+- **Code Example:**
+    ```java
+    public void update(int index, int val) {
+        if (this.L == this.R) {
+            this.sum = val;
+            return;
+        }
+
+        int M = (this.L + this.R) / 2;
+        if (index > M) {
+            this.right.update(index, val);
+        } else {
+            this.left.update(index, val);
+        }
+        this.sum = this.left.sum + this.right.sum;
+    }
+    ```
+
+**Range Query:**
+Returns the sum of a range.
+
+- **Code Example:**
+    ```java
+    public int rangeQuery(int L, int R) {
+        if (L == this.L && R == this.R) {
+            return this.sum;
+        }
+
+        int M = (this.L + this.R) / 2;
+        if (L > M) {
+            return this.right.rangeQuery(L, R);
+        } else if (R <= M) {
+            return this.left.rangeQuery(L, R);
+        } else {
+            return this.left.rangeQuery(L, M) + this.right.rangeQuery(M + 1, R);
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Build: \(O(n)\)**
+    - **Explanation:** Constructs the tree in linear time.
+- **Update and Range Query: \(O(\log n)\)**
+    - **Explanation:** Updates and queries take logarithmic time due to the tree height.
+
+---
+
+### Iterative DFS
+
+#### Description
+Depth-First Search (DFS) is a tree traversal algorithm that explores as far as possible along each branch before backtracking. Iterative DFS uses a stack instead of recursion to traverse the tree.
+
+#### Operations
+
+**Inorder Traversal:**
+Visit the left subtree, the root node, and then the right subtree using a stack.
+
+- **Code Example:**
+    ```java
+    public static void inorder(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+
+        while (curr != null || !stack.isEmpty()) {
+            if (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            } else {
+                curr = stack.pop();
+                System.out.println(curr.val);
+                curr = curr.right;
+            }
+        }
+    }
+    ```
+
+**Preorder Traversal:**
+Visit the root node, the left subtree, and then the right subtree using a stack.
+
+- **Code Example:**
+    ```java
+    public static void preorder(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+
+        while (curr != null || !stack.isEmpty()) {
+            if (curr != null) {
+                System.out.println(curr.val);
+                if (curr.right != null) {
+                    stack.push(curr.right);
+                }
+                curr = curr.left;
+            } else {
+                curr = stack.pop();
+            }
+        }
+    }
+    ```
+
+**Postorder Traversal:**
+Visit the left subtree, the right subtree, and then the root node using two stacks.
+
+- **Code Example:**
+    ```java
+    public static void postorder(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        Stack<Boolean> visit = new Stack<>();
+        visit.push(false);
+
+        while (!stack.isEmpty()) {
+            TreeNode curr = stack.pop();
+            boolean visited = visit.pop();
+            if (curr != null) {
+                if (visited) {
+                    System.out.println(curr.val);
+                } else {
+                    stack.push(curr);
+                    visit.push(true);
+                    stack.push(curr.right);
+                    visit.push(false);
+                    stack.push(curr.left);
+                    visit.push(false);
+                }
+            }
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Traversal: \(O(n)\)**
+    - **Explanation:** Each node is visited exactly once.
+ 
 ---
 
