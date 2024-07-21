@@ -2107,8 +2107,6 @@ Use backtracking to explore all possible permutations by swapping elements.
 ---
 ## Graphs
 ---
-### Leetcode
-
 #### Matrix DFS
 1. [Number of Islands](https://leetcode.com/problems/number-of-islands/) - Medium
 2. [Max Area of Island](https://leetcode.com/problems/max-area-of-island/) - Medium
@@ -2124,7 +2122,7 @@ Use backtracking to explore all possible permutations by swapping elements.
 4. [Number of Connected Components In An Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) - Medium
 ---
 ### Greedy Algorithms (Graphs+)
-
+---
 #### Dijkstra’s Algorithm
 1. [Network Delay Time](https://leetcode.com/problems/network-delay-time/) - Medium
 2. [Swim In Rising Water](https://leetcode.com/problems/swim-in-rising-water/) - Hard
@@ -2613,6 +2611,12 @@ Topological sort can be implemented using DFS. Visit all nodes, and for each nod
 ---
 ## Bit Manipulation
 ---
+1. [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) - Easy
+2. [Counting Bits](https://leetcode.com/problems/counting-bits/) - Easy
+3. [Reverse Bits](https://leetcode.com/problems/reverse-bits/) - Easy
+4. [Missing Number](https://leetcode.com/problems/missing-number/) - Easy
+5. [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/) - Medium
+---
 
 ### Bit Operations
 
@@ -2776,7 +2780,39 @@ Final count is `4`.
   - **Explanation:** Each operation iterates over the bits of the integer, resulting in logarithmic time complexity based on the number of bits.
 
 ---
-## Dynamic Programming (DP)
+## DYNAMIC PROGRAMMING (DP)
+---
+#### 2-Dimension DP
+1. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) - Easy
+2. [House Robber](https://leetcode.com/problems/house-robber/) - Medium
+
+#### 2-Dimension DP
+1. [Unique Paths](https://leetcode.com/problems/unique-paths/) - Medium
+2. [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/) - Medium
+3. [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) - Medium
+
+#### 0 / 1 Knapsack
+1. [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) - Medium
+2. [Target Sum](https://leetcode.com/problems/target-sum/) - Medium
+3. [Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/) - Medium
+4. [Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/) - Medium
+
+#### Unbounded Knapsack
+1. [Coin Change](https://leetcode.com/problems/coin-change/) - Medium
+2. [Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/) - Medium
+3. [Coin Change II](https://leetcode.com/problems/coin-change-ii/) - Medium
+
+#### Longest Common Subsequence (LCS)
+1. [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) - Medium
+2. [Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/) - Hard
+3. [Edit Distance](https://leetcode.com/problems/edit-distance/) - Medium
+4. [Interleaving String](https://leetcode.com/problems/interleaving-string/) - Medium
+5. [Shortest Common Supersequence](https://leetcode.com/problems/shortest-common-supersequence/) - Hard
+
+#### Palindromes
+1. [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) - Medium
+2. [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/) - Medium
+3. [Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/) - Medium
 ---
 
 ### 1-Dimension DP
