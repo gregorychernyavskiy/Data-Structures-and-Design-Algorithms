@@ -2879,3 +2879,5 @@ Dynamic programming can be used to solve problems related to palindromes, such a
     ```
 - **Time Complexity: \(O(n^2)\)**
 - **Space Complexity: \(O(n^2)\)**
+
+---
