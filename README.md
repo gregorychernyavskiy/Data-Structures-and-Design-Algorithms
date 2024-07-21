@@ -416,9 +416,10 @@ Given an array, build a prefix sum array where each element at index `i` is the 
     ```
 
 ---
-## LINKED LIST
+## LINKED LISTS
 ---
 ### Leetcode
+
 1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
 2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
 3. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
@@ -426,6 +427,15 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 5. [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) - Medium
 6. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
 7. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
+---
+### DESIGN LINKED LISTS
+
+#### Fast and Slow Pointers
+1. [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) - Easy
+2. [Maximum Twin Sum Of A Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) - Medium
+3. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
+4. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) - Medium
+5. [Find The Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) - Medium
 ---
 
 ### Singly Linked Lists
