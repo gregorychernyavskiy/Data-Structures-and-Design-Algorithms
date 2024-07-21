@@ -1699,10 +1699,18 @@ Visit the left subtree, the right subtree, and then the root node using two stac
 ## HEAPS
 ---
 ### Leetcode
+
 1. [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) - Easy
 2. [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) - Easy
 3. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
 4. [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) - Medium
+---
+### DESIGN HEAPS
+
+#### Two Heaps
+1. [Find Median From Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) - Hard
+2. [Sliding Window Median](https://leetcode.com/problems/sliding-window-median/) - Hard
+3. [IPO](https://leetcode.com/problems/ipo/) - Hard
 ---
 
 ### Heap Properties
