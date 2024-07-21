@@ -1601,6 +1601,8 @@ Visit the left subtree, the right subtree, and then the root node using two stac
     - **Explanation:** Each node is visited exactly once.
  
 ---
+## HEAPS
+---
 
 ### Heap Properties
 
@@ -1750,7 +1752,7 @@ To build a heap, start from the last non-leaf node and percolate down each node 
 
 ---
 
-### Two Heaps
+### Two Heaps (DESIGN)
 
 #### Description
 Using two heaps (a min-heap and a max-heap) is a technique to efficiently solve problems like finding the median of a data stream. The max-heap stores the smaller half of the data, and the min-heap stores the larger half.
@@ -1804,6 +1806,8 @@ Maintain two heaps such that the max-heap contains the smaller half of the numbe
 - **Get Median: \(O(1)\)**
     - **Explanation:** Retrieving the median is a constant time operation since it involves accessing the root of the heaps.
 
+---
+## BACKTRACKING
 ---
 
 ### Tree Maze
@@ -1862,7 +1866,7 @@ To retrieve the path, use a list to store the nodes in the current path. Backtra
 
 ---
 
-### Subsets
+### Subsets (DESIGN)
 
 #### Description
 Subsets are all possible combinations of elements from a set where the order does not matter. The elements must be distinct.
@@ -1901,7 +1905,7 @@ Use backtracking to explore all possible subsets by deciding whether to include 
 
 ---
 
-### Combinations
+### Combinations (DESIGN)
 
 #### Description
 Combinations involve selecting elements from a set where the order does not matter, but the elements must be distinct. Typically, combinations have a fixed size \(k\).
@@ -1942,7 +1946,7 @@ Use backtracking to explore all possible combinations of a given size \(k\) from
 
 ---
 
-### Permutations
+### Permutations (DESIGN)
 
 #### Description
 Permutations are all possible arrangements of a set of distinct elements where the order matters. The number of permutations of \(n\) elements is \(n!\).
