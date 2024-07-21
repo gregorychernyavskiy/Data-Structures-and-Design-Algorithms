@@ -2219,3 +2219,229 @@ Perform BFS to find the shortest path from a source to a destination.
 
 ---
 
+### Dijkstra's Algorithm
+
+#### Description
+Dijkstra's algorithm is used to find the shortest paths from a source vertex to all other vertices in a weighted graph. Unlike BFS, which works only for unweighted graphs, Dijkstra's algorithm can handle graphs with varying edge weights. It prioritizes finding the "lightest" path, i.e., the path with the smallest total weight.
+
+#### Operations
+
+**Implementation:**
+Dijkstra's algorithm uses a min-heap to keep track of the next vertex to visit based on the smallest known distance from the source.
+
+- **Code Example:**
+    ```java
+    import java.util.*;
+
+    public class Dijkstra {
+        public static Map<Integer, Integer> shortestPath(int[][] edges, int n, int src) {
+            Map<Integer, ArrayList<Integer[]>> adj = new HashMap<>();
+            for (int i = 1; i <= n; i++) {
+                adj.put(i, new ArrayList<>());
+            }
+            for (int[] edge : edges) {
+                int s = edge[0], d = edge[1], w = edge[2];
+                adj.get(s).add(new Integer[] {d, w});
+            }
+
+            HashMap<Integer, Integer> shortest = new HashMap<>();
+            Queue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+            minHeap.add(new int[]{0, src});
+
+            while (!minHeap.isEmpty()) {
+                int[] cur = minHeap.poll();
+                int weight = cur[0], node = cur[1];
+
+                if (shortest.containsKey(node)) continue;
+                shortest.put(node, weight);
+
+                for (Integer[] neighbor : adj.get(node)) {
+                    int nextNode = neighbor[0], nextWeight = neighbor[1];
+                    if (!shortest.containsKey(nextNode)) {
+                        minHeap.add(new int[]{weight + nextWeight, nextNode});
+                    }
+                }
+            }
+            return shortest;
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Time Complexity: \(O(E \log V)\)**
+  - **Explanation:** Each edge is processed at most once, and each operation on the min-heap (insert/remove) takes \(O(\log V)\).
+
+---
+
+### Prim's Algorithm
+
+#### Description
+Prim's algorithm is used to find the minimum spanning tree (MST) of a weighted undirected graph. It starts from an arbitrary node and grows the MST by adding the smallest edge that connects a vertex in the MST to a vertex outside the MST.
+
+#### Operations
+
+**Implementation:**
+Prim's algorithm uses a min-heap to select the edge with the smallest weight that connects the growing MST to a new vertex.
+
+- **Code Example:**
+    ```java
+    import java.util.*;
+
+    public class Prim {
+        public static List<int[]> mst(int[][] edges, int n) {
+            Map<Integer, List<int[]>> adj = new HashMap<>();
+            for (int i = 1; i <= n; i++) {
+                adj.put(i, new ArrayList<>());
+            }
+            for (int[] edge : edges) {
+                int u = edge[0], v = edge[1], w = edge[2];
+                adj.get(u).add(new int[]{v, w});
+                adj.get(v).add(new int[]{u, w});
+            }
+
+            Queue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+            List<int[]> mst = new ArrayList<>();
+            Set<Integer> visited = new HashSet<>();
+            visited.add(1);
+
+            for (int[] neighbor : adj.get(1)) {
+                minHeap.add(new int[]{neighbor[1], 1, neighbor[0]});
+            }
+
+            while (visited.size() < n) {
+                int[] edge = minHeap.poll();
+                int weight = edge[0], u = edge[1], v = edge[2];
+                if (visited.contains(v)) continue;
+                visited.add(v);
+                mst.add(new int[]{u, v});
+
+                for (int[] neighbor : adj.get(v)) {
+                    if (!visited.contains(neighbor[0])) {
+                        minHeap.add(new int[]{neighbor[1], v, neighbor[0]});
+                    }
+                }
+            }
+            return mst;
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Time Complexity: \(O(E \log V)\)**
+  - **Explanation:** Each edge is processed, and each operation on the min-heap takes \(O(\log V)\).
+
+---
+
+### Kruskal's Algorithm
+
+#### Description
+Kruskal's algorithm is another method for finding the minimum spanning tree (MST) of a graph. It sorts all edges by weight and adds them one by one to the MST, skipping edges that would form a cycle, until the MST includes all vertices.
+
+#### Operations
+
+**Implementation:**
+Kruskal's algorithm uses a union-find data structure to detect cycles and manage the growing MST.
+
+- **Code Example:**
+    ```java
+    import java.util.*;
+
+    public class Kruskal {
+        public static List<int[]> mst(int[][] edges, int n) {
+            Arrays.sort(edges, Comparator.comparingInt(a -> a[2]));
+            UnionFind uf = new UnionFind(n);
+            List<int[]> mst = new ArrayList<>();
+
+            for (int[] edge : edges) {
+                int u = edge[0], v = edge[1], weight = edge[2];
+                if (uf.union(u, v)) {
+                    mst.add(new int[]{u, v});
+                    if (mst.size() == n - 1) break;
+                }
+            }
+            return mst;
+        }
+    }
+
+    class UnionFind {
+        int[] parent, rank;
+
+        UnionFind(int size) {
+            parent = new int[size + 1];
+            rank = new int[size + 1];
+            for (int i = 0; i <= size; i++) parent[i] = i;
+        }
+
+        boolean union(int u, int v) {
+            int pu = find(u), pv = find(v);
+            if (pu == pv) return false;
+            if (rank[pu] > rank[pv]) {
+                parent[pv] = pu;
+            } else if (rank[pu] < rank[pv]) {
+                parent[pu] = pv;
+            } else {
+                parent[pv] = pu;
+                rank[pu]++;
+            }
+            return true;
+        }
+
+        int find(int u) {
+            if (parent[u] != u) parent[u] = find(parent[u]);
+            return parent[u];
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Time Complexity: \(O(E \log E)\)**
+  - **Explanation:** Sorting the edges takes \(O(E \log E)\), and the union-find operations take \(O(\log V)\) each.
+
+---
+
+### Topological Sort
+
+#### Description
+Topological sort is a linear ordering of vertices in a directed acyclic graph (DAG) such that for every directed edge \(u \rightarrow v\), vertex \(u\) comes before \(v\). It is used in scenarios where dependencies need to be resolved, such as task scheduling.
+
+#### Operations
+
+**Implementation:**
+Topological sort can be implemented using DFS. Visit all nodes, and for each node, recursively visit all its neighbors before adding the node to the result.
+
+- **Code Example:**
+    ```java
+    import java.util.*;
+
+    public class TopologicalSort {
+        public static List<Integer> topologicalSort(int[][] edges, int n) {
+            Map<Integer, List<Integer>> adj = new HashMap<>();
+            for (int i = 1; i <= n; i++) adj.put(i, new ArrayList<>());
+            for (int[] edge : edges) adj.get(edge[0]).add(edge[1]);
+
+            List<Integer> topSort = new ArrayList<>();
+            Set<Integer> visited = new HashSet<>();
+
+            for (int i = 1; i <= n; i++) {
+                if (!visited.contains(i)) dfs(i, adj, visited, topSort);
+            }
+
+            Collections.reverse(topSort);
+            return topSort;
+        }
+
+        private static void dfs(int node, Map<Integer, List<Integer>> adj, Set<Integer> visited, List<Integer> topSort) {
+            if (visited.contains(node)) return;
+            visited.add(node);
+            for (int neighbor : adj.get(node)) dfs(neighbor, adj, visited, topSort);
+            topSort.add(node);
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Time Complexity: \(O(V + E)\)**
+  - **Explanation:** Each vertex and each edge is processed exactly once.
+
+---
+
