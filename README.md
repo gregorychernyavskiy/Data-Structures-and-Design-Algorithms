@@ -2607,3 +2607,253 @@ Final count is `4`.
   - **Explanation:** Each operation iterates over the bits of the integer, resulting in logarithmic time complexity based on the number of bits.
 
 ---
+
+### 1-Dimension DP
+
+#### Description
+One-dimensional dynamic programming (1D DP) is a technique to solve problems by breaking them down into simpler subproblems, where the solutions are stored in a 1D array to avoid redundant calculations.
+
+#### Common Problems
+
+**Climbing Stairs:**
+- **Problem:** Given `n` steps, each time you can climb 1 or 2 steps, find the number of distinct ways to reach the top.
+- **Code Example:**
+    ```java
+    public int climbStairs(int n) {
+        if (n == 1) return 1;
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+    ```
+- **Time Complexity: \(O(n)\)**
+- **Space Complexity: \(O(n)\)**
+
+**House Robber:**
+- **Problem:** Given an array representing the amount of money of each house, determine the maximum amount you can rob tonight without alerting the police (you cannot rob two adjacent houses).
+- **Code Example:**
+    ```java
+    public int rob(int[] nums) {
+        if (nums.length == 0) return 0;
+        if (nums.length == 1) return nums[0];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+        }
+        return dp[nums.length - 1];
+    }
+    ```
+- **Time Complexity: \(O(n)\)**
+- **Space Complexity: \(O(n)\)**
+
+---
+
+### 2-Dimension DP
+
+#### Description
+Two-dimensional dynamic programming (2D DP) extends 1D DP to solve problems that can be represented in a grid or table format. It involves creating a 2D array to store intermediate results.
+
+#### Common Problems
+
+**Unique Paths:**
+- **Problem:** Given a `m x n` grid, find the number of unique paths from the top-left corner to the bottom-right corner, moving only down or right.
+- **Code Example:**
+    ```java
+    public int uniquePaths(int m, int n) {
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < m; i++) dp[i][0] = 1;
+        for (int j = 0; j < n; j++) dp[0][j] = 1;
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+    ```
+- **Time Complexity: \(O(m \cdot n)\)**
+- **Space Complexity: \(O(m \cdot n)\)**
+
+**Longest Common Subsequence:**
+- **Problem:** Given two strings, find the length of their longest common subsequence.
+- **Code Example:**
+    ```java
+    public int longestCommonSubsequence(String text1, String text2) {
+        int m = text1.length(), n = text2.length();
+        int[][] dp = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+    ```
+- **Time Complexity: \(O(m \cdot n)\)**
+- **Space Complexity: \(O(m \cdot n)\)**
+
+---
+
+### 0/1 Knapsack
+
+#### Description
+The 0/1 knapsack problem involves selecting items with given weights and values to maximize the total value without exceeding the weight limit. Each item can be included or excluded (0/1).
+
+#### Operations
+
+**Implementation:**
+Use a 2D array to store the maximum value at each n-th item and capacity c.
+
+- **Code Example:**
+    ```java
+    public int knapsack(int[] weights, int[] values, int W) {
+        int n = weights.length;
+        int[][] dp = new int[n + 1][W + 1];
+        for (int i = 1; i <= n; i++) {
+            for (int w = 0; w <= W; w++) {
+                if (weights[i - 1] <= w) {
+                    dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1]);
+                } else {
+                    dp[i][w] = dp[i - 1][w];
+                }
+            }
+        }
+        return dp[n][W];
+    }
+    ```
+- **Time Complexity: \(O(n \cdot W)\)**
+- **Space Complexity: \(O(n \cdot W)\)**
+
+---
+
+### Unbounded Knapsack
+
+#### Description
+The unbounded knapsack problem allows for an unlimited number of each item. The goal is to maximize the total value without exceeding the weight limit.
+
+#### Operations
+
+**Implementation:**
+Use a 1D array to store the maximum value at each capacity c, iterating through items and capacities.
+
+- **Code Example:**
+    ```java
+    public int unboundedKnapsack(int[] weights, int[] values, int W) {
+        int[] dp = new int[W + 1];
+        for (int w = 0; w <= W; w++) {
+            for (int i = 0; i < weights.length; i++) {
+                if (weights[i] <= w) {
+                    dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);
+                }
+            }
+        }
+        return dp[W];
+    }
+    ```
+- **Time Complexity: \(O(n \cdot W)\)**
+- **Space Complexity: \(O(W)\)**
+
+---
+
+### Longest Common Subsequence (LCS)
+
+#### Description
+The longest common subsequence problem finds the longest subsequence present in both given sequences where order is preserved.
+
+#### Operations
+
+**Implementation:**
+Use a 2D array to store the lengths of LCS for substrings.
+
+- **Code Example:**
+    ```java
+    public int longestCommonSubsequence(String text1, String text2) {
+        int m = text1.length(), n = text2.length();
+        int[][] dp = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+    ```
+- **Time Complexity: \(O(m \cdot n)\)**
+- **Space Complexity: \(O(m \cdot n)\)**
+
+---
+
+### Palindromes
+
+#### Description
+Dynamic programming can be used to solve problems related to palindromes, such as finding the longest palindromic substring or counting palindromic substrings.
+
+#### Common Problems
+
+**Longest Palindromic Substring:**
+- **Problem:** Find the longest palindromic substring in a given string.
+- **Code Example:**
+    ```java
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) return "";
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
+    ```
+- **Time Complexity: \(O(n^2)\)**
+- **Space Complexity: \(O(1)\)**
+
+**Palindromic Substrings:**
+- **Problem:** Count the
+
+ number of palindromic substrings in a given string.
+- **Code Example:**
+    ```java
+    public int countSubstrings(String s) {
+        int n = s.length(), count = 0;
+        boolean[][] dp = new boolean[n][n];
+        for (int len = 1; len <= n; len++) {
+            for (int i = 0; i <= n - len; i++) {
+                int j = i + len - 1;
+                if (s.charAt(i) == s.charAt(j) && (len <= 2 || dp[i + 1][j - 1])) {
+                    dp[i][j] = true;
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    ```
+- **Time Complexity: \(O(n^2)\)**
+- **Space Complexity: \(O(n^2)\)**
