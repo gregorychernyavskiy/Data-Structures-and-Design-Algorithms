@@ -230,6 +230,217 @@ public int dequeue() {
    - **Explanation:** These operations involve adding or removing elements from the ends of the queue, which can be done in constant time without iterating through other elements.
 
 ---
+## HASHING
+---
+### Leetcode
+1. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) - Easy
+2. [Two Sum](https://leetcode.com/problems/two-sum/) - Easy
+3. [LRU Cache](https://leetcode.com/problems/lru-cache/) - Medium
+4. [Group Anagrams](https://leetcode.com/problems/group-anagrams/) - Medium
+5. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) - Medium
+6. [Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/) - Medium
+7. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) - Medium
+---
+
+### Hash Usage
+
+#### Description
+Hash maps and hash sets are fundamental data structures used for fast access and retrieval of data. They are based on hashing, which allows for nearly constant time complexity for search, insert, and delete operations. Hash maps store key-value pairs, while hash sets store unique elements.
+
+#### Operations
+
+**Contains Duplicate:**
+Given an array, return true if any value appears at least twice in the array, otherwise return false.
+
+- **Code Example:**
+    ```java
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
+    ```
+
+**Two Sum:**
+Given an array of integers and a target value, return the indices of the two numbers that add up to the target.
+
+- **Code Example:**
+    ```java
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+    ```
+
+**LRU Cache:**
+An LRU (Least Recently Used) Cache is a data structure that stores a limited number of items and evicts the least recently used item when the limit is exceeded.
+
+- **Code Example:**
+    ```java
+    class LRUCache {
+        private int capacity;
+        private Map<Integer, Integer> map;
+        private LinkedList<Integer> order;
+
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.map = new HashMap<>();
+            this.order = new LinkedList<>();
+        }
+
+        public int get(int key) {
+            if (!map.containsKey(key)) return -1;
+            order.remove((Integer) key);
+            order.addFirst(key);
+            return map.get(key);
+        }
+
+        public void put(int key, int value) {
+            if (map.containsKey(key)) {
+                order.remove((Integer) key);
+            } else if (map.size() == capacity) {
+                int leastUsed = order.removeLast();
+                map.remove(leastUsed);
+            }
+            order.addFirst(key);
+            map.put(key, value);
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Insert, Search, and Delete: \(O(1)\)**
+    - **Explanation:** Hash maps and hash sets provide average-case constant time complexity for these operations due to efficient hashing and handling of collisions.
+
+---
+
+### Hash Implementation
+
+#### Description
+Hash maps are typically implemented using arrays under the hood, combined with a hash function to map keys to array indices. Collisions are handled using techniques like chaining or open addressing.
+
+#### Operations
+
+**Hash Function:**
+A hash function converts a key into an integer index that maps to an array position. This is done by summing the ASCII values of the characters in the key and taking the modulo with the array size.
+
+- **Code Example:**
+    ```java
+    public int hash(String key) {
+        int index = 0;
+        for (int i = 0; i < key.length(); i++) {
+            index += (int) key.charAt(i);
+        }
+        return index % this.capacity;
+    }
+    ```
+
+**Insert:**
+To insert a key-value pair, compute the hash of the key to determine the array index. Handle collisions using chaining or open addressing.
+
+- **Code Example:**
+    ```java
+    public void put(String key, String val) {
+        int index = this.hash(key);
+
+        while (true) {
+            if (this.map[index] == null) {
+                this.map[index] = new Pair(key, val);
+                this.size += 1;
+                if (this.size >= this.capacity / 2) {
+                    this.rehash();
+                }
+                return;       
+            } else if (this.map[index].key.equals(key)) {
+                this.map[index].val = val;
+                return;
+            }
+            index += 1;
+            index = index % this.capacity;
+        }    
+    }
+    ```
+
+**Get:**
+Retrieve a value by computing the hash of the key and checking the corresponding array index. Handle collisions by following the chain or probing for the key.
+
+- **Code Example:**
+    ```java
+    public String get(String key) {
+        int index = this.hash(key);
+        while (this.map[index] != null) {
+            if (this.map[index].key.equals(key)) {
+                return this.map[index].val;
+            }  
+            index += 1;
+            index = index % this.capacity;
+        }    
+        return null;
+    }
+    ```
+
+**Remove:**
+To remove a key-value pair, find the key and set the corresponding array index to null. Handle the hole created by rehashing subsequent entries.
+
+- **Code Example:**
+    ```java
+    public void remove(String key) {
+        if (this.get(key) == null) {
+            return;
+        }
+        
+        int index = this.hash(key);
+        while (true) {
+            if (this.map[index].key.equals(key)) {
+                this.map[index] = null;
+                this.size -= 1;
+                return;
+            }    
+            index += 1;
+            index = index % this.capacity;
+        }
+    }
+    ```
+
+**Rehashing:**
+When the array becomes half full, double the array size and rehash all existing entries to the new array.
+
+- **Code Example:**
+    ```java
+    public void rehash() {
+        this.capacity = 2 * this.capacity;
+        Pair[] newMap = new Pair[this.capacity];
+
+        Pair[] oldMap = this.map;
+        this.map = newMap;
+        this.size = 0;
+        for (Pair p : oldMap) {
+            if (p != null) {
+                this.put(p.key, p.val);
+            }
+        }
+    }
+    ```
+
+**Time Complexity:**
+- **Insert, Search, and Delete: \(O(1)\)**
+    - **Explanation:** With efficient hashing and collision resolution, these operations can be performed in constant time on average.
+- **Rehashing: \(O(n)\)**
+    - **Explanation:** Rehashing requires re-inserting all elements into a new larger array, which takes linear time.
+
+---
 ## SLIDING WINDOW
 ---
 1. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) - Easy
@@ -603,217 +814,6 @@ Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast 
   - **Explanation:** The algorithm iterates through the list with two pointers.
 - **Cycle Detection:** O(n)
   - **Explanation:** The algorithm iterates through the list with two pointers.
-
----
-## HASHING
----
-### Leetcode
-1. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) - Easy
-2. [Two Sum](https://leetcode.com/problems/two-sum/) - Easy
-3. [LRU Cache](https://leetcode.com/problems/lru-cache/) - Medium
-4. [Group Anagrams](https://leetcode.com/problems/group-anagrams/) - Medium
-5. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) - Medium
-6. [Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/) - Medium
-7. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) - Medium
----
-
-### Hash Usage
-
-#### Description
-Hash maps and hash sets are fundamental data structures used for fast access and retrieval of data. They are based on hashing, which allows for nearly constant time complexity for search, insert, and delete operations. Hash maps store key-value pairs, while hash sets store unique elements.
-
-#### Operations
-
-**Contains Duplicate:**
-Given an array, return true if any value appears at least twice in the array, otherwise return false.
-
-- **Code Example:**
-    ```java
-    public boolean containsDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            if (set.contains(num)) {
-                return true;
-            }
-            set.add(num);
-        }
-        return false;
-    }
-    ```
-
-**Two Sum:**
-Given an array of integers and a target value, return the indices of the two numbers that add up to the target.
-
-- **Code Example:**
-    ```java
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-            if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
-            }
-            map.put(nums[i], i);
-        }
-        throw new IllegalArgumentException("No two sum solution");
-    }
-    ```
-
-**LRU Cache:**
-An LRU (Least Recently Used) Cache is a data structure that stores a limited number of items and evicts the least recently used item when the limit is exceeded.
-
-- **Code Example:**
-    ```java
-    class LRUCache {
-        private int capacity;
-        private Map<Integer, Integer> map;
-        private LinkedList<Integer> order;
-
-        public LRUCache(int capacity) {
-            this.capacity = capacity;
-            this.map = new HashMap<>();
-            this.order = new LinkedList<>();
-        }
-
-        public int get(int key) {
-            if (!map.containsKey(key)) return -1;
-            order.remove((Integer) key);
-            order.addFirst(key);
-            return map.get(key);
-        }
-
-        public void put(int key, int value) {
-            if (map.containsKey(key)) {
-                order.remove((Integer) key);
-            } else if (map.size() == capacity) {
-                int leastUsed = order.removeLast();
-                map.remove(leastUsed);
-            }
-            order.addFirst(key);
-            map.put(key, value);
-        }
-    }
-    ```
-
-**Time Complexity:**
-- **Insert, Search, and Delete: \(O(1)\)**
-    - **Explanation:** Hash maps and hash sets provide average-case constant time complexity for these operations due to efficient hashing and handling of collisions.
-
----
-
-### Hash Implementation
-
-#### Description
-Hash maps are typically implemented using arrays under the hood, combined with a hash function to map keys to array indices. Collisions are handled using techniques like chaining or open addressing.
-
-#### Operations
-
-**Hash Function:**
-A hash function converts a key into an integer index that maps to an array position. This is done by summing the ASCII values of the characters in the key and taking the modulo with the array size.
-
-- **Code Example:**
-    ```java
-    public int hash(String key) {
-        int index = 0;
-        for (int i = 0; i < key.length(); i++) {
-            index += (int) key.charAt(i);
-        }
-        return index % this.capacity;
-    }
-    ```
-
-**Insert:**
-To insert a key-value pair, compute the hash of the key to determine the array index. Handle collisions using chaining or open addressing.
-
-- **Code Example:**
-    ```java
-    public void put(String key, String val) {
-        int index = this.hash(key);
-
-        while (true) {
-            if (this.map[index] == null) {
-                this.map[index] = new Pair(key, val);
-                this.size += 1;
-                if (this.size >= this.capacity / 2) {
-                    this.rehash();
-                }
-                return;       
-            } else if (this.map[index].key.equals(key)) {
-                this.map[index].val = val;
-                return;
-            }
-            index += 1;
-            index = index % this.capacity;
-        }    
-    }
-    ```
-
-**Get:**
-Retrieve a value by computing the hash of the key and checking the corresponding array index. Handle collisions by following the chain or probing for the key.
-
-- **Code Example:**
-    ```java
-    public String get(String key) {
-        int index = this.hash(key);
-        while (this.map[index] != null) {
-            if (this.map[index].key.equals(key)) {
-                return this.map[index].val;
-            }  
-            index += 1;
-            index = index % this.capacity;
-        }    
-        return null;
-    }
-    ```
-
-**Remove:**
-To remove a key-value pair, find the key and set the corresponding array index to null. Handle the hole created by rehashing subsequent entries.
-
-- **Code Example:**
-    ```java
-    public void remove(String key) {
-        if (this.get(key) == null) {
-            return;
-        }
-        
-        int index = this.hash(key);
-        while (true) {
-            if (this.map[index].key.equals(key)) {
-                this.map[index] = null;
-                this.size -= 1;
-                return;
-            }    
-            index += 1;
-            index = index % this.capacity;
-        }
-    }
-    ```
-
-**Rehashing:**
-When the array becomes half full, double the array size and rehash all existing entries to the new array.
-
-- **Code Example:**
-    ```java
-    public void rehash() {
-        this.capacity = 2 * this.capacity;
-        Pair[] newMap = new Pair[this.capacity];
-
-        Pair[] oldMap = this.map;
-        this.map = newMap;
-        this.size = 0;
-        for (Pair p : oldMap) {
-            if (p != null) {
-                this.put(p.key, p.val);
-            }
-        }
-    }
-    ```
-
-**Time Complexity:**
-- **Insert, Search, and Delete: \(O(1)\)**
-    - **Explanation:** With efficient hashing and collision resolution, these operations can be performed in constant time on average.
-- **Rehashing: \(O(n)\)**
-    - **Explanation:** Rehashing requires re-inserting all elements into a new larger array, which takes linear time.
 
 ---
 ## SORTING
