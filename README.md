@@ -1979,3 +1979,245 @@ Use backtracking to explore all possible permutations by swapping elements.
 
 ---
 
+### Introduction to Graphs
+
+#### Description
+A graph is a data structure consisting of nodes (vertices) connected by edges. Graphs are versatile structures used to represent various real-world problems, such as networks, social connections, and paths. 
+
+#### Graph Terminology
+- **Vertex (Node):** A fundamental part of a graph that can store data.
+- **Edge:** A connection between two vertices. It can be directed or undirected.
+- **Directed Graph:** Graph where edges have a direction, indicating the relationship flows from one vertex to another.
+- **Undirected Graph:** Graph where edges have no direction, indicating a bidirectional relationship.
+- **Adjacency Matrix:** A 2D array representation where each cell `(i, j)` indicates the presence of an edge between vertex `i` and vertex `j`.
+- **Adjacency List:** A collection of lists or arrays, where each list represents a vertex and contains the vertices adjacent to it.
+
+#### Formats of Graphs
+1. **Matrix (2D Grid):**
+   - **Code Example:**
+     ```java
+     int[][] grid = {
+         {0, 0, 0, 0},
+         {1, 1, 0, 0},
+         {0, 0, 0, 1},
+         {0, 1, 0, 0}
+     };
+     ```
+
+2. **Adjacency Matrix:**
+   - **Code Example:**
+     ```java
+     int[][] adjMatrix = {
+         {0, 1, 0, 0},
+         {1, 0, 1, 0},
+         {0, 1, 0, 1},
+         {0, 0, 1, 0}
+     };
+     ```
+
+3. **Adjacency List:**
+   - **Code Example:**
+     ```java
+     public class GraphNode {
+         int val;
+         List<GraphNode> neighbors;
+         public GraphNode(int val) {
+             this.val = val;
+             this.neighbors = new ArrayList<GraphNode>();
+         }
+     }
+     HashMap<Integer, List<Integer>> adjList = new HashMap<>();
+     adjList.put(1, Arrays.asList(2, 3));
+     adjList.put(2, Arrays.asList(1, 4));
+     adjList.put(3, Arrays.asList(1, 4));
+     adjList.put(4, Arrays.asList(2, 3));
+     ```
+
+**Time Complexity:**
+- **Adjacency Matrix: \(O(V^2)\)**
+  - **Explanation:** A square matrix of size \(V \times V\) is used, where \(V\) is the number of vertices.
+- **Adjacency List: \(O(V + E)\)**
+  - **Explanation:** Space depends on the number of vertices \(V\) and edges \(E\).
+
+---
+
+### Matrix DFS
+
+#### Description
+Depth-First Search (DFS) on a matrix is used to traverse and explore all nodes of a graph represented as a 2D grid. DFS explores as far as possible along each branch before backtracking.
+
+#### Operations
+
+**DFS Implementation:**
+To implement DFS, start from a given cell and recursively visit all four possible directions (up, down, left, right) while marking visited cells to avoid re-visitation.
+
+- **Code Example:**
+    ```java
+    public int dfs(int[][] grid, int r, int c, int[][] visit) {
+        int ROWS = grid.length, COLS = grid[0].length;
+        if (Math.min(r, c) < 0 || r >= ROWS || c >= COLS || visit[r][c] == 1 || grid[r][c] == 1) {
+            return 0;
+        }
+        if (r == ROWS - 1 && c == COLS - 1) {
+            return 1;
+        }
+        visit[r][c] = 1;
+        int count = 0;
+        count += dfs(grid, r + 1, c, visit);
+        count += dfs(grid, r - 1, c, visit);
+        count += dfs(grid, r, c + 1, visit);
+        count += dfs(grid, r, c - 1, visit);
+        visit[r][c] = 0;
+        return count;
+    }
+    ```
+
+**Time Complexity:**
+- **DFS: \(O(n \cdot m)\)**
+  - **Explanation:** In the worst case, DFS visits each cell in the \(n \times m\) grid exactly once.
+
+---
+
+### Matrix BFS
+
+#### Description
+Breadth-First Search (BFS) on a matrix is used to find the shortest path from a starting cell to a target cell in a grid. BFS explores all neighbors at the present depth level before moving on to nodes at the next depth level.
+
+#### Operations
+
+**BFS Implementation:**
+To implement BFS, use a queue to traverse the grid level by level, starting from the source cell. Mark visited cells to avoid re-visitation.
+
+- **Code Example:**
+    ```java
+    public int bfs(int[][] grid) {
+        int ROWS = grid.length;
+        int COLS = grid[0].length;
+        int[][] visit = new int[ROWS][COLS];
+        Deque<int[]> queue = new ArrayDeque<>();
+        queue.add(new int[] {0, 0});
+        visit[0][0] = 1;
+        int length = 0;
+
+        while (!queue.isEmpty()) {
+            int queueLength = queue.size();
+            for (int i = 0; i < queueLength; i++) {
+                int[] pair = queue.poll();
+                int r = pair[0], c = pair[1];
+                if (r == ROWS - 1 && c == COLS - 1) {
+                    return length;
+                }
+                int[][] neighbors = {{r, c + 1}, {r, c - 1}, {r + 1, c}, {r - 1, c}};
+                for (int[] neighbor : neighbors) {
+                    int newR = neighbor[0], newC = neighbor[1];
+                    if (Math.min(newR, newC) < 0 || newR >= ROWS || newC >= COLS || visit[newR][newC] == 1 || grid[newR][newC] == 1) {
+                        continue;
+                    }
+                    queue.add(neighbor);
+                    visit[newR][newC] = 1;
+                }
+            }
+            length++;
+        }
+        return -1; // Path not found
+    }
+    ```
+
+**Time Complexity:**
+- **BFS: \(O(n \cdot m)\)**
+  - **Explanation:** Each cell in the \(n \times m\) grid is visited at most once.
+
+---
+
+### Adjacency List
+
+#### Description
+An adjacency list is a way of representing a graph using a list of lists or arrays. Each vertex in the graph has a list of adjacent vertices, making it a space-efficient way to represent sparse graphs.
+
+#### Operations
+
+**Building an Adjacency List:**
+Given a list of edges, construct the adjacency list by mapping each vertex to its neighbors.
+
+- **Code Example:**
+    ```java
+    public class GraphNode {
+        int val;
+        List<GraphNode> neighbors;
+        public GraphNode(int val) {
+            this.val = val;
+            this.neighbors = new ArrayList<GraphNode>();
+        }
+    }
+    HashMap<Integer, List<Integer>> adjList = new HashMap<>();
+    String[][] edges = {{"A", "B"}, {"B", "C"}, {"B", "E"}, {"C", "E"}, {"E", "D"}};
+    for (String[] edge : edges) {
+        String src = edge[0], dst = edge[1];
+        adjList.putIfAbsent(src, new ArrayList<>());
+        adjList.putIfAbsent(dst, new ArrayList<>());
+        adjList.get(src).add(dst);
+    }
+    ```
+
+**DFS on Adjacency List:**
+Perform DFS to explore all paths from a source to a destination.
+
+- **Code Example:**
+    ```java
+    public int dfs(String node, String target, HashMap<String, ArrayList<String>> adjList, HashSet<String> visit) {
+        if (visit.contains(node)) {
+            return 0;
+        }
+        if (node.equals(target)) {
+            return 1;
+        }
+        visit.add(node);
+        int count = 0;
+        for (String neighbor : adjList.get(node)) {
+            count += dfs(neighbor, target, adjList, visit);
+        }
+        visit.remove(node);
+        return count;
+    }
+    ```
+
+**BFS on Adjacency List:**
+Perform BFS to find the shortest path from a source to a destination.
+
+- **Code Example:**
+    ```java
+    public int bfs(String node, String target, HashMap<String, ArrayList<String>> adjList) {
+        int length = 0;
+        HashSet<String> visit = new HashSet<>();
+        Queue<String> queue = new LinkedList<>();
+        visit.add(node);
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            int queueLength = queue.size();
+            for (int i = 0; i < queueLength; i++) {
+                String curr = queue.poll();
+                if (curr.equals(target)) {
+                    return length;
+                }
+                for (String neighbor : adjList.get(curr)) {
+                    if (!visit.contains(neighbor)) {
+                        visit.add(neighbor);
+                        queue.add(neighbor);
+                    }
+                }
+            }
+            length++;
+        }
+        return length; // Path not found
+    }
+    ```
+
+**Time Complexity:**
+- **DFS and BFS:
+
+ \(O(V + E)\)**
+  - **Explanation:** The algorithms visit all vertices \(V\) and edges \(E\) in the graph.
+
+---
+
