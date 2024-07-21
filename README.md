@@ -3,6 +3,16 @@
 ---
 ## ARRAYS
 ---
+### Leetcode
+1. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
+2. [Remove Element](https://leetcode.com/problems/remove-element/) - Easy
+3. [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/) - Easy
+4. [Reverse String](https://leetcode.com/problems/reverse-string/) - Easy
+5. [Valid Anagram](https://leetcode.com/problems/valid-anagram/) - Easy
+6. [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/) - Easy
+7. [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) - Medium
+8. [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/) - Medium
+---
 
 ### Static Arrays
 
@@ -67,10 +77,6 @@ public void removeMiddle(int[] arr, int i, int length) {
 }
 ```
 
-#### Suggested Problems
-1. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
-2. [Remove Element](https://leetcode.com/problems/remove-element/) - Easy
-
 ---
 
 ### Dynamic Arrays
@@ -111,9 +117,6 @@ public void resize() {
    arr = newArr;
 }  
 ```
-
-#### Suggested Problems
-1. [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/) - Easy
 
 ---
 
