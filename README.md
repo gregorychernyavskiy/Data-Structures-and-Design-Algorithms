@@ -402,3 +402,142 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 3. [Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) - Medium
 4. [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) - Easy
 5. [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) - Medium
+
+---
+
+### Singly Linked Lists
+
+#### Description
+A singly linked list is a linear data structure composed of nodes, where each node contains a value and a pointer to the next node in the sequence. This structure allows for efficient insertion and deletion operations.
+
+#### Operations
+
+**Creating a Singly Linked List:**
+A linked list is created by chaining `ListNode` objects together. Each `ListNode` object has two attributes: `val` (value) and `next` (pointer to the next node).
+
+- **Code Example:**
+    ```java
+    public class ListNode {
+        int val;
+        ListNode next;
+        public ListNode(int val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+    ```
+
+**Traversal:**
+Traversal involves iterating through the linked list from the head to the end using a while loop.
+
+- **Code Example:**
+    ```java
+    ListNode cur = head;
+    while (cur != null) {
+        cur = cur.next;
+    }
+    ```
+
+**Appending:**
+Appending a node to the end of a singly linked list involves updating the `next` pointer of the last node to point to the new node.
+
+- **Code Example:**
+    ```java
+    tail.next = newNode;
+    tail = newNode;
+    ```
+
+**Deletion:**
+Deleting a node involves updating the `next` pointer of the previous node to skip over the node to be deleted.
+
+- **Code Example:**
+    ```java
+    head.next = head.next.next;
+    ```
+
+#### Suggested Problems
+1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
+2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
+
+---
+
+### Doubly Linked Lists
+
+#### Description
+A doubly linked list is a linear data structure similar to a singly linked list but with an additional pointer in each node that points to the previous node. This allows for more efficient bidirectional traversal.
+
+#### Operations
+
+**Insertion:**
+Insertion involves updating the `next` and `prev` pointers of the adjacent nodes.
+
+- **Code Example:**
+    ```java
+    tail.next = newNode;
+    newNode.prev = tail;
+    tail = newNode;
+    ```
+
+**Deletion:**
+Deletion involves updating the `next` pointer of the previous node and the `prev` pointer of the next node.
+
+- **Code Example:**
+    ```java
+    node.prev.next = node.next;
+    if (node.next != null) {
+        node.next.prev = node.prev;
+    }
+    ```
+
+#### Suggested Problems
+1. [Design Linked List](https://leetcode.com/problems/design-linked-list/) - Medium
+2. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
+
+---
+
+### Fast and Slow Pointers
+
+#### Description
+The fast and slow pointer technique involves using two pointers that move at different speeds to solve various problems in linked lists, such as finding the middle of a list or detecting cycles.
+
+#### Operations
+
+**Finding the Middle of a Linked List:**
+Using fast and slow pointers, the slow pointer moves one step at a time while the fast pointer moves two steps at a time. When the fast pointer reaches the end, the slow pointer will be at the middle.
+
+- **Code Example:**
+    ```java
+    public static ListNode middleOfList(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    ```
+
+**Cycle Detection:**
+Using Floyd's Tortoise and Hare algorithm, the fast pointer moves twice as fast as the slow pointer. If there is a cycle, the fast pointer will eventually catch up to the slow pointer.
+
+- **Code Example:**
+    ```java
+    public static boolean hasCycle(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+    ```
+
+#### Suggested Problems
+1. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
+2. [Find The Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) - Medium
+3. [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) - Easy
+4. [Maximum Twin Sum Of A Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) - Medium
+5. [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) - Medium
