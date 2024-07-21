@@ -3,7 +3,6 @@
 ---
 ## ARRAYS
 ---
-### Leetcode
 1. [Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) - Easy
 2. [Remove Element](https://leetcode.com/problems/remove-element/) - Easy
 3. [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/) - Easy
@@ -121,7 +120,6 @@ public void resize() {
 ---
 ## STACKS
 ---
-### Leetcode
 1. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) - Easy
 2. [Baseball Game](https://leetcode.com/problems/baseball-game/) - Easy
 3. [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) - Easy
@@ -167,7 +165,6 @@ public int peek() {
 ---
 ## QUEUES
 ---
-### Leetcode
 1. [Number of Students Unable to Eat Lunch](https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/) - Easy
 2. [Dota2 Senate](https://leetcode.com/problems/dota2-senate/) - Medium
 ---
@@ -214,7 +211,6 @@ public int dequeue() {
 ---
 ## SLIDING WINDOW
 ---
-###Leetcode
 1. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) - Easy
 2. [Contains Duplicate II (Fixed Size)](https://leetcode.com/problems/contains-duplicate-ii/) - Easy
 3. [Longest Substring Without Repeating Characters (Variable Size)](https://leetcode.com/problems/longest-substring-without-repeating-characters/) - Medium
@@ -323,7 +319,6 @@ Find the minimum length subarray where the sum is greater than or equal to the t
 ---
 ## TWO POINTERS
 ---
-### Leetcode
 1. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) - Easy
 2. [Two Sum II Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) - Medium
 3. [3Sum](https://leetcode.com/problems/3sum/) - Medium
@@ -378,7 +373,6 @@ Given a sorted input array, return the two indices of two elements that sum up t
 ---
 ## PREFIX SUM
 ---
-### Leetcode
 1. [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) - Easy
 2. [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) - Easy
 3. [Find the Highest Altitude](https://leetcode.com/problems/find-the-highest-altitude/) - Easy
@@ -418,8 +412,6 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 ---
 ## LINKED LISTS
 ---
-### Leetcode
-
 1. [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
 2. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) - Easy
 3. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) - Easy
@@ -429,7 +421,7 @@ Given an array, build a prefix sum array where each element at index `i` is the 
 7. [Design Browser History](https://leetcode.com/problems/design-browser-history/) - Medium
 ---
 ### DESIGN LINKED LISTS
-
+---
 #### Fast and Slow Pointers
 1. [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) - Easy
 2. [Maximum Twin Sum Of A Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) - Medium
@@ -774,8 +766,6 @@ When the array becomes half full, double the array size and rehash all existing 
 ---
 ## SORTING
 ---
-### Leetcode
-
 #### Insertion Sort
 1. [Sort an Array](https://leetcode.com/problems/sort-an-array/) - Medium
 
@@ -993,7 +983,6 @@ Bucket sort is a distribution sort that works by distributing the elements of an
 ---
 ## BINARY SEARCH
 ---
-### Leetcode
 1. [Binary Search](https://leetcode.com/problems/binary-search/) - Easy
 2. [Guess Number Higher Or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/) - Easy
 3. [First Bad Version](https://leetcode.com/problems/first-bad-version/) - Easy
@@ -1084,8 +1073,6 @@ This involves using a binary search algorithm to guess the target within the pro
 ---
 ## TREES
 ---
-### Leetcode
-
 #### Binary Search Tree
 1. [Search In A Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/) - Easy
 2. [Insert into a Binary Search Tree](https://leetcode.com/problems/insert-into-a-binary-search-tree/) - Medium
@@ -1106,7 +1093,7 @@ This involves using a binary search algorithm to guess the target within the pro
 2. [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) - Medium
 ---
 ### DESIGN TREES
-
+---
 #### Trie
 1. [Implement Trie Prefix Tree](https://leetcode.com/problems/implement-trie-prefix-tree/) - Medium
 2. [Design Add And Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) - Medium
@@ -1698,15 +1685,13 @@ Visit the left subtree, the right subtree, and then the root node using two stac
 ---
 ## HEAPS
 ---
-### Leetcode
-
 1. [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) - Easy
 2. [Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) - Easy
 3. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) - Medium
 4. [K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) - Medium
 ---
 ### DESIGN HEAPS
-
+---
 #### Two Heaps
 1. [Find Median From Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) - Hard
 2. [Sliding Window Median](https://leetcode.com/problems/sliding-window-median/) - Hard
@@ -1916,7 +1901,26 @@ Maintain two heaps such that the max-heap contains the smaller half of the numbe
     - **Explanation:** Retrieving the median is a constant time operation since it involves accessing the root of the heaps.
 
 ---
-## BACKTRACKING
+### BACKTRACKING
+---
+1. [Path Sum](https://leetcode.com/problems/path-sum/) - Easy
+2. [Subsets](https://leetcode.com/problems/subsets/) - Medium
+3. [Combination Sum](https://leetcode.com/problems/combination-sum/) - Medium
+---
+### Backtracking+
+---
+#### Subsets
+1. [Subsets](https://leetcode.com/problems/subsets/) - Medium
+2. [Subsets II](https://leetcode.com/problems/subsets-ii/) - Medium
+
+#### Combinations
+1. [Combinations](https://leetcode.com/problems/combinations/) - Medium
+2. [Combination Sum](https://leetcode.com/problems/combination-sum/) - Medium
+3. [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) - Medium
+
+#### Permutations
+1. [Permutations](https://leetcode.com/problems/permutations/) - Medium
+2. [Permutations II](https://leetcode.com/problems/permutations-ii/) - Medium
 ---
 
 ### Tree Maze
@@ -2118,6 +2122,28 @@ Use backtracking to explore all possible permutations by swapping elements.
 2. [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/) - Medium
 3. [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/) - Medium
 4. [Number of Connected Components In An Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/) - Medium
+---
+### Greedy Algorithms (Graphs+)
+
+#### Dijkstra’s Algorithm
+1. [Network Delay Time](https://leetcode.com/problems/network-delay-time/) - Medium
+2. [Swim In Rising Water](https://leetcode.com/problems/swim-in-rising-water/) - Hard
+3. [Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/) - Medium
+
+#### Prim’s Algorithm
+1. [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) - Medium
+2. [Find Critical and Pseudo Critical Edges](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/) - Hard
+
+#### Kruskal’s Algorithm
+1. [Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/) - Medium
+2. [Find Critical and Pseudo Critical Edges](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/) - Hard
+
+#### Topological Sort
+1. [Course Schedule](https://leetcode.com/problems/course-schedule/) - Medium
+2. [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) - Medium
+3. [Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) - Medium
+4. [Sort Items By Groups Respecting Dependencies](https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/) - Hard
+5. [Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) - Hard
 ---
 
 ### Introduction to Graphs
