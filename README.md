@@ -117,8 +117,20 @@ public void resize() {
 }  
 ```
 **Time Complexity:**
-- **Insert, Search, and Delete:** \(O(1)\) on average for hash maps and hash sets.
-   - **Explanation:** Hash maps and hash sets provide average-case constant time complexity for these operations due to efficient hashing and handling of collisions.
+- **Reading:** O(1)
+  - **Explanation:** Accessing an element by index is a constant time operation.
+- **Insert at End (Static Array):** O(1) if within capacity
+  - **Explanation:** Inserting at the end is a constant time operation if there is space.
+- **Remove from End:** O(1)
+  - **Explanation:** Removing the last element is a constant time operation.
+- **Insert at Index:** O(n)
+  - **Explanation:** Inserting at a specific index requires shifting elements to the right.
+- **Remove at Index:** O(n)
+  - **Explanation:** Removing an element at a specific index requires shifting elements to the left.
+- **Push Back (Dynamic Array):** Amortized O(1)
+  - **Explanation:** Inserting an element at the end is generally O(1), but resizing can cause occasional O(n) operations.
+- **Resize:** O(n)
+  - **Explanation:** Resizing involves copying all elements to a new array, which takes linear time.
 
 ---
 ## STACKS
