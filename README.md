@@ -746,6 +746,9 @@ When the array becomes half full, double the array size and rehash all existing 
     - **Explanation:** Rehashing requires re-inserting all elements into a new larger array, which takes linear time.
 
 ---
+## SORTING
+---
+
 ### Insertion Sort
 
 #### Description
@@ -946,6 +949,8 @@ Bucket sort is a distribution sort that works by distributing the elements of an
     - Best, Average, and Worst Case: \(O(n)\) (assuming uniform distribution)
 
 ---
+## BINARY SEARCH
+---
 
 ### Binary Search Array
 
@@ -1027,6 +1032,8 @@ This involves using a binary search algorithm to guess the target within the pro
 - **Best, Average, and Worst Case: \(O(\log n)\)**
     - **Explanation:** Similar to standard binary search, each step reduces the search space by half.
 
+---
+## TREES
 ---
 
 ### Binary Tree
@@ -1305,7 +1312,7 @@ A map stores key-value pairs and is sorted by the key.
 
 ---
 
-### Trie
+### Trie (DESIGN)
 
 #### Description
 A trie, also known as a prefix tree, is a tree data structure used for storing a dynamic set or associative array where the keys are usually strings. Each node in the trie represents a single character of the key, and the path from the root to a node represents a prefix of the keys.
@@ -1380,7 +1387,7 @@ To check if there is any word that starts with a given prefix, iterate through e
 
 ---
 
-### Union-Find
+### Union-Find (DESIGN)
 
 #### Description
 Union-Find, also known as Disjoint Set Union (DSU), is a data structure that keeps track of a set of elements partitioned into disjoint (non-overlapping) subsets. It supports two primary operations: union and find.
@@ -1430,7 +1437,7 @@ Joins two subsets into a single subset. Uses union by rank to keep the tree flat
 
 ---
 
-### Segment Tree
+### Segment Tree (DESIGN)
 
 #### Description
 A segment tree is a data structure that allows for efficient range queries and updates. It is particularly useful for scenarios where there are multiple range queries and updates on an array.
@@ -1506,7 +1513,7 @@ Returns the sum of a range.
 
 ---
 
-### Iterative DFS
+### Iterative DFS (DESIGN)
 
 #### Description
 Depth-First Search (DFS) is a tree traversal algorithm that explores as far as possible along each branch before backtracking. Iterative DFS uses a stack instead of recursion to traverse the tree.
