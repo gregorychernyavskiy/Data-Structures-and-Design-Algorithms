@@ -1,5 +1,23 @@
+---
 # Data Structures and Design Algorithms
-
+---
+Sure, here's the Table of Contents for your GitHub repository:
+1. [Arrays](#arrays)
+2. [Stacks](#stacks)
+3. [Queues](#queues)
+4. [Hashing](#hashing)
+5. [Sliding Window](#sliding-window)
+6. [Two Pointers](#two-pointers)
+7. [Prefix Sum](#prefix-sum)
+8. [Linked Lists](#linked-lists)
+9. [Sorting](#sorting)
+10. [Binary Search](#binary-search)
+11. [Trees](#trees)
+12. [Heaps](#heaps)
+13. [Backtracking](#backtracking)
+14. [Graphs](#graphs)
+15. [Bit Manipulation](#bit-manipulation)
+16. [Dynamic Programming (DP)](#dynamic-programming-dp)
 ---
 ## ARRAYS
 ---
