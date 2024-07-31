@@ -1,7 +1,7 @@
 ---
 # Data Structures and Design Algorithms
 ---
-Sure, here's the Table of Contents for your GitHub repository:
+
 1. [Arrays](#arrays)
 2. [Stacks](#stacks)
 3. [Queues](#queues)
