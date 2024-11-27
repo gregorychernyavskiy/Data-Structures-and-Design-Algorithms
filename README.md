@@ -459,7 +459,7 @@ map.put(6, "Fig");
 map.remove(6, "Fig"); // Removes the entry only if the value is "Fig"
 ```
 
-#### Operations
+#### Pracitce Problems
 
 **Contains Duplicate:**
 Given an array, return true if any value appears at least twice in the array, otherwise return false.
