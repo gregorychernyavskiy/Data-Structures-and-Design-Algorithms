@@ -664,7 +664,7 @@ map.remove(6, "Fig"); // Removes the entry only if the value is "Fig"
 
 ---
 
-## Time Complexities for Hash Maps
+## Time Complexity for Hash Maps
 
 ### **Insert**
 - **Average Case:** \( O(1) \)
