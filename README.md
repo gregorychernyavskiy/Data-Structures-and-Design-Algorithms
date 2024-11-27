@@ -497,43 +497,7 @@ Given an array of integers and a target value, return the indices of the two num
         throw new IllegalArgumentException("No two sum solution");
     }
     ```
-
-**LRU Cache:**
-An LRU (Least Recently Used) Cache is a data structure that stores a limited number of items and evicts the least recently used item when the limit is exceeded.
-
-- **Code Example:**
-    ```java
-    class LRUCache {
-        private int capacity;
-        private Map<Integer, Integer> map;
-        private LinkedList<Integer> order;
-
-        public LRUCache(int capacity) {
-            this.capacity = capacity;
-            this.map = new HashMap<>();
-            this.order = new LinkedList<>();
-        }
-
-        public int get(int key) {
-            if (!map.containsKey(key)) return -1;
-            order.remove((Integer) key);
-            order.addFirst(key);
-            return map.get(key);
-        }
-
-        public void put(int key, int value) {
-            if (map.containsKey(key)) {
-                order.remove((Integer) key);
-            } else if (map.size() == capacity) {
-                int leastUsed = order.removeLast();
-                map.remove(leastUsed);
-            }
-            order.addFirst(key);
-            map.put(key, value);
-        }
-    }
-    ```
-
+    
 ---
 
 ### Hash Implementation
