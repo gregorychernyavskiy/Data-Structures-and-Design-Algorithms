@@ -459,6 +459,8 @@ map.put(6, "Fig");
 map.remove(6, "Fig"); // Removes the entry only if the value is "Fig"
 ```
 
+---
+
 ## Practice Problems:
 
 **Contains Duplicate:**
@@ -531,10 +533,6 @@ An LRU (Least Recently Used) Cache is a data structure that stores a limited num
         }
     }
     ```
-
-**Time Complexity:**
-- **Insert, Search, and Delete: \(O(1)\)**
-    - **Explanation:** Hash maps and hash sets provide average-case constant time complexity for these operations due to efficient hashing and handling of collisions.
 
 ---
 
@@ -646,11 +644,47 @@ When the array becomes half full, double the array size and rehash all existing 
     }
     ```
 
-**Time Complexity:**
-- **Insert, Search, and Delete: \(O(1)\)**
-    - **Explanation:** With efficient hashing and collision resolution, these operations can be performed in constant time on average.
-- **Rehashing: \(O(n)\)**
-    - **Explanation:** Rehashing requires re-inserting all elements into a new larger array, which takes linear time.
+---
+
+## Time Complexities
+
+### **Insert**
+- **Average Case:** \( O(1) \)
+- **Worst Case:** \( O(n) \)
+
+**Explanation:**
+- **Average Case \( O(1) \):** The hash function maps the key to an index, and the value is stored at that index. With minimal collisions, this operation is constant time.
+- **Worst Case \( O(n) \):** If many keys hash to the same index (collisions), a linear search through the bucket or multiple probes (open addressing) is required.
+
+---
+
+### **Delete**
+- **Average Case:** \( O(1) \)
+- **Worst Case:** \( O(n) \)
+
+**Explanation:**
+- **Average Case \( O(1) \):** The hash function calculates the index, and the key-value pair is removed directly from the table.
+- **Worst Case \( O(n) \):** In case of collisions, finding the key may involve traversing a long list (separate chaining) or probing multiple slots (open addressing).
+
+---
+
+### **Search (Lookup)**
+- **Average Case:** \( O(1) \)
+- **Worst Case:** \( O(n) \)
+
+**Explanation:**
+- **Average Case \( O(1) \):** The hash function calculates the index, and the value is retrieved directly from the table.
+- **Worst Case \( O(n) \):** When many keys collide, the search operation must traverse a long bucket or probe through slots, leading to linear time.
+
+---
+
+## Summary Table
+
+| Operation | Average Time Complexity | Worst Time Complexity |
+|-----------|--------------------------|------------------------|
+| **Insert** | \( O(1) \)              | \( O(n) \)            |
+| **Delete** | \( O(1) \)              | \( O(n) \)            |
+| **Search** | \( O(1) \)              | \( O(n) \)            |
 
 ---
 ## SLIDING WINDOW
