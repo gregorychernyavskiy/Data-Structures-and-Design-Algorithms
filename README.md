@@ -5,7 +5,7 @@
 1. [Arrays](#arrays)
 2. [Stacks](#stacks)
 3. [Queues](#queues)
-4. [Hash Maps](#hashmaps)
+4. [Hash Maps](#hash-maps)
 5. [Sliding Window](#sliding-window)
 6. [Two Pointers](#two-pointers)
 7. [Prefix Sum](#prefix-sum)
