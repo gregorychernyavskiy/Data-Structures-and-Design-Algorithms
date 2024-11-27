@@ -265,6 +265,200 @@ public int dequeue() {
 #### Description
 Hash maps and hash sets are fundamental data structures used for fast access and retrieval of data. They are based on hashing, which allows for nearly constant time complexity for search, insert, and delete operations. Hash maps store key-value pairs, while hash sets store unique elements.
 
+---
+
+## Command Cheat Sheet
+1. [Creating a Map](#1-creating-a-map)
+2. [Inserting Key-Value Pairs](#2-inserting-key-value-pairs)
+3. [Accessing Values](#3-accessing-values)
+4. [Checking Key Existence](#4-checking-key-existence)
+5. [Checking Value Existence](#5-checking-value-existence)
+6. [Removing Key-Value Pairs](#6-removing-key-value-pairs)
+7. [Iterating Through a Map](#7-iterating-through-a-map)
+8. [Getting Keys or Values](#8-getting-keys-or-values)
+9. [Getting Map Size](#9-getting-map-size)
+10. [Clearing the Map](#10-clearing-the-map)
+11. [Checking if the Map is Empty](#11-checking-if-the-map-is-empty)
+12. [Replacing a Value](#12-replacing-a-value)
+13. [Merging Maps](#13-merging-maps)
+14. [Computing a Value](#14-computing-a-value)
+15. [Getting Default Values](#15-getting-default-values)
+16. [Conditional Removal](#16-conditional-removal)
+
+---
+
+## 1. Creating a Map
+
+```java
+import java.util.*;
+
+Map<Integer, String> map = new HashMap<>(); // Creates a HashMap
+Map<Integer, String> treeMap = new TreeMap<>(); // Creates a TreeMap (sorted order)
+Map<Integer, String> linkedMap = new LinkedHashMap<>(); // Maintains insertion order
+```
+
+---
+
+## 2. Inserting Key-Value Pairs
+
+```java
+map.put(1, "Apple");
+map.put(2, "Banana");
+map.put(3, "Cherry");
+```
+
+---
+
+## 3. Accessing Values
+
+```java
+String value = map.get(1); // Returns "Apple"
+System.out.println(value); // Output: Apple
+```
+
+---
+
+## 4. Checking Key Existence
+
+```java
+if (map.containsKey(2)) {
+    System.out.println("Key 2 exists");
+}
+```
+
+---
+
+## 5. Checking Value Existence
+
+```java
+if (map.containsValue("Banana")) {
+    System.out.println("Banana exists");
+}
+```
+
+---
+
+## 6. Removing Key-Value Pairs
+
+```java
+map.remove(2); // Removes the key 2 and its associated value
+System.out.println(map); // Output: {1=Apple, 3=Cherry}
+```
+
+---
+
+## 7. Iterating Through a Map
+
+### Using `entrySet()`:
+```java
+for (Map.Entry<Integer, String> entry : map.entrySet()) {
+    System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+}
+```
+
+### Using `keySet()`:
+```java
+for (Integer key : map.keySet()) {
+    System.out.println("Key: " + key + ", Value: " + map.get(key));
+}
+```
+
+### Using `forEach()` (Java 8+):
+```java
+map.forEach((key, value) -> {
+    System.out.println("Key: " + key + ", Value: " + value);
+});
+```
+
+---
+
+## 8. Getting Keys or Values
+
+```java
+Set<Integer> keys = map.keySet(); // Get all keys
+Collection<String> values = map.values(); // Get all values
+
+System.out.println(keys); // Output: [1, 3]
+System.out.println(values); // Output: [Apple, Cherry]
+```
+
+---
+
+## 9. Getting Map Size
+
+```java
+System.out.println("Map size: " + map.size()); // Output: 2
+```
+
+---
+
+## 10. Clearing the Map
+
+```java
+map.clear();
+System.out.println(map); // Output: {}
+```
+
+---
+
+## 11. Checking if the Map is Empty
+
+```java
+if (map.isEmpty()) {
+    System.out.println("The map is empty");
+}
+```
+
+---
+
+## 12. Replacing a Value
+
+```java
+map.put(1, "Apple");
+map.replace(1, "Apricot"); // Replaces "Apple" with "Apricot"
+System.out.println(map); // Output: {1=Apricot}
+```
+
+---
+
+## 13. Merging Maps
+
+```java
+Map<Integer, String> anotherMap = new HashMap<>();
+anotherMap.put(4, "Date");
+anotherMap.put(5, "Elderberry");
+
+map.putAll(anotherMap);
+System.out.println(map); // Output: {1=Apricot, 4=Date, 5=Elderberry}
+```
+
+---
+
+## 14. Computing a Value
+
+```java
+map.compute(1, (key, val) -> val + " Pie"); // Appends " Pie" to the value
+System.out.println(map); // Output: {1=Apricot Pie}
+```
+
+---
+
+## 15. Getting Default Values
+
+```java
+String value = map.getOrDefault(6, "Not Found");
+System.out.println(value); // Output: Not Found
+```
+
+---
+
+## 16. Conditional Removal
+
+```java
+map.put(6, "Fig");
+map.remove(6, "Fig"); // Removes the entry only if the value is "Fig"
+```
+
 #### Operations
 
 **Contains Duplicate:**
