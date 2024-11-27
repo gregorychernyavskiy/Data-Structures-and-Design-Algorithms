@@ -5,7 +5,7 @@
 1. [Arrays](#arrays)
 2. [Stacks](#stacks)
 3. [Queues](#queues)
-4. [Hashing](#hashing)
+4. [Hash Maps](#hashmaps)
 5. [Sliding Window](#sliding-window)
 6. [Two Pointers](#two-pointers)
 7. [Prefix Sum](#prefix-sum)
@@ -248,7 +248,7 @@ public int dequeue() {
    - **Explanation:** These operations involve adding or removing elements from the ends of the queue, which can be done in constant time without iterating through other elements.
 
 ---
-## HASHING
+## HASH MAPS
 ---
 ### Leetcode
 1. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) - Easy
