@@ -267,7 +267,7 @@ Hash maps and hash sets are fundamental data structures used for fast access and
 
 ---
 
-## Command Cheat Sheet
+### Command Cheat Sheet
 1. [Creating a Map](#1-creating-a-map)
 2. [Inserting Key-Value Pairs](#2-inserting-key-value-pairs)
 3. [Accessing Values](#3-accessing-values)
@@ -287,7 +287,7 @@ Hash maps and hash sets are fundamental data structures used for fast access and
 
 ---
 
-## 1. Creating a Map
+### 1. Creating a Map
 
 ```java
 import java.util.*;
@@ -299,7 +299,7 @@ Map<Integer, String> linkedMap = new LinkedHashMap<>(); // Maintains insertion o
 
 ---
 
-## 2. Inserting Key-Value Pairs
+### 2. Inserting Key-Value Pairs
 
 ```java
 map.put(1, "Apple");
@@ -309,7 +309,7 @@ map.put(3, "Cherry");
 
 ---
 
-## 3. Accessing Values
+### 3. Accessing Values
 
 ```java
 String value = map.get(1); // Returns "Apple"
@@ -318,7 +318,7 @@ System.out.println(value); // Output: Apple
 
 ---
 
-## 4. Checking Key Existence
+### 4. Checking Key Existence
 
 ```java
 if (map.containsKey(2)) {
@@ -328,7 +328,7 @@ if (map.containsKey(2)) {
 
 ---
 
-## 5. Checking Value Existence
+### 5. Checking Value Existence
 
 ```java
 if (map.containsValue("Banana")) {
@@ -338,7 +338,7 @@ if (map.containsValue("Banana")) {
 
 ---
 
-## 6. Removing Key-Value Pairs
+### 6. Removing Key-Value Pairs
 
 ```java
 map.remove(2); // Removes the key 2 and its associated value
@@ -347,7 +347,7 @@ System.out.println(map); // Output: {1=Apple, 3=Cherry}
 
 ---
 
-## 7. Iterating Through a Map
+### 7. Iterating Through a Map
 
 ### Using `entrySet()`:
 ```java
@@ -372,7 +372,7 @@ map.forEach((key, value) -> {
 
 ---
 
-## 8. Getting Keys or Values
+### 8. Getting Keys or Values
 
 ```java
 Set<Integer> keys = map.keySet(); // Get all keys
@@ -384,7 +384,7 @@ System.out.println(values); // Output: [Apple, Cherry]
 
 ---
 
-## 9. Getting Map Size
+### 9. Getting Map Size
 
 ```java
 System.out.println("Map size: " + map.size()); // Output: 2
@@ -392,7 +392,7 @@ System.out.println("Map size: " + map.size()); // Output: 2
 
 ---
 
-## 10. Clearing the Map
+### 10. Clearing the Map
 
 ```java
 map.clear();
@@ -401,7 +401,7 @@ System.out.println(map); // Output: {}
 
 ---
 
-## 11. Checking if the Map is Empty
+### 11. Checking if the Map is Empty
 
 ```java
 if (map.isEmpty()) {
@@ -411,7 +411,7 @@ if (map.isEmpty()) {
 
 ---
 
-## 12. Replacing a Value
+### 12. Replacing a Value
 
 ```java
 map.put(1, "Apple");
@@ -421,7 +421,7 @@ System.out.println(map); // Output: {1=Apricot}
 
 ---
 
-## 13. Merging Maps
+### 13. Merging Maps
 
 ```java
 Map<Integer, String> anotherMap = new HashMap<>();
@@ -434,7 +434,7 @@ System.out.println(map); // Output: {1=Apricot, 4=Date, 5=Elderberry}
 
 ---
 
-## 14. Computing a Value
+### 14. Computing a Value
 
 ```java
 map.compute(1, (key, val) -> val + " Pie"); // Appends " Pie" to the value
@@ -443,7 +443,7 @@ System.out.println(map); // Output: {1=Apricot Pie}
 
 ---
 
-## 15. Getting Default Values
+### 15. Getting Default Values
 
 ```java
 String value = map.getOrDefault(6, "Not Found");
@@ -452,12 +452,14 @@ System.out.println(value); // Output: Not Found
 
 ---
 
-## 16. Conditional Removal
+### 16. Conditional Removal
 
 ```java
 map.put(6, "Fig");
 map.remove(6, "Fig"); // Removes the entry only if the value is "Fig"
 ```
+
+## Practice Problems:
 
 **Contains Duplicate:**
 Given an array, return true if any value appears at least twice in the array, otherwise return false.
