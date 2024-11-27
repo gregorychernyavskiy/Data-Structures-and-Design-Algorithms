@@ -5,7 +5,7 @@
 1. [Arrays](#arrays)
 2. [Stacks](#stacks)
 3. [Queues](#queues)
-4. [Hash Maps](#hash-maps)
+4. [Hashing](#hashing)
 5. [Sliding Window](#sliding-window)
 6. [Two Pointers](#two-pointers)
 7. [Prefix Sum](#prefix-sum)
@@ -248,7 +248,7 @@ public int dequeue() {
    - **Explanation:** These operations involve adding or removing elements from the ends of the queue, which can be done in constant time without iterating through other elements.
 
 ---
-## HASH MAPS
+## HASHING
 ---
 ### Leetcode
 1. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) - Easy
@@ -263,11 +263,214 @@ public int dequeue() {
 ### Hash Usage
 
 #### Description
-Hash maps are essential data structures designed for fast data access and retrieval. Utilizing hashing, they achieve nearly constant time complexity for operations like search, insert, and delete. Unlike hash sets, which store unique elements, hash maps organize data in key-value pairs, making them ideal for mapping and associative operations.
+Hash maps and hash sets are fundamental data structures used for fast access and retrieval of data. They are based on hashing, which allows for nearly constant time complexity for search, insert, and delete operations. Hash maps store key-value pairs, while hash sets store unique elements.
 
 ---
 
-### Command Cheat Sheet
+## Command Cheat Sheet for Hash Sets
+1. [Creating a Hash Set](#1-creating-a-hash-set)
+2. [Adding Elements](#2-adding-elements)
+3. [Checking Element Existence](#3-checking-element-existence)
+4. [Removing Elements](#4-removing-elements)
+5. [Iterating Through a Hash Set](#5-iterating-through-a-hash-set)
+6. [Getting Set Size](#6-getting-set-size)
+7. [Clearing the Hash Set](#7-clearing-the-hash-set)
+8. [Checking if the Set is Empty](#8-checking-if-the-set-is-empty)
+9. [Combining Sets](#9-combining-sets)
+10. [Advanced Commands](#10-advanced-commands)
+
+---
+
+## 1. Creating a Hash Set
+
+```java
+import java.util.*;
+
+Set<String> hashSet = new HashSet<>(); // Creates a HashSet
+```
+
+---
+
+## 2. Adding Elements
+
+Use `add()` to insert elements into the hash set. Duplicate elements are automatically ignored.
+
+```java
+hashSet.add("Apple");
+hashSet.add("Banana");
+hashSet.add("Cherry");
+```
+
+---
+
+## 3. Checking Element Existence
+
+Use `contains()` to check if an element exists in the hash set.
+
+```java
+if (hashSet.contains("Banana")) {
+    System.out.println("Banana is in the set");
+}
+```
+
+---
+
+## 4. Removing Elements
+
+Use `remove()` to delete a specific element from the hash set.
+
+```java
+hashSet.remove("Banana"); // Removes "Banana" from the set
+System.out.println(hashSet); // Output: [Apple, Cherry]
+```
+
+---
+
+## 5. Iterating Through a Hash Set
+
+### Using a `for-each` loop:
+```java
+for (String element : hashSet) {
+    System.out.println(element);
+}
+```
+
+### Using an `Iterator`:
+```java
+Iterator<String> iterator = hashSet.iterator();
+while (iterator.hasNext()) {
+    System.out.println(iterator.next());
+}
+```
+
+### Using `forEach()` (Java 8+):
+```java
+hashSet.forEach(element -> {
+    System.out.println(element);
+});
+```
+
+---
+
+## 6. Getting Set Size
+
+Use `size()` to find the number of elements in the hash set.
+
+```java
+System.out.println("Set size: " + hashSet.size()); // Output: 2
+```
+
+---
+
+## 7. Clearing the Hash Set
+
+Use `clear()` to remove all elements from the hash set.
+
+```java
+hashSet.clear();
+System.out.println(hashSet); // Output: []
+```
+
+---
+
+## 8. Checking if the Set is Empty
+
+Use `isEmpty()` to check if the hash set has no elements.
+
+```java
+if (hashSet.isEmpty()) {
+    System.out.println("The set is empty");
+}
+```
+
+---
+
+## 9. Combining Sets
+
+### Adding All Elements from Another Set:
+Use `addAll()` to combine two sets.
+
+```java
+Set<String> anotherSet = new HashSet<>();
+anotherSet.add("Date");
+anotherSet.add("Elderberry");
+
+hashSet.addAll(anotherSet);
+System.out.println(hashSet); // Output: [Apple, Cherry, Date, Elderberry]
+```
+
+---
+
+## 10. Advanced Commands
+
+### Retaining Common Elements:
+Use `retainAll()` to keep only the elements that are common between two sets.
+
+```java
+Set<String> anotherSet = new HashSet<>();
+anotherSet.add("Apple");
+anotherSet.add("Fig");
+
+hashSet.retainAll(anotherSet); // Keeps only "Apple"
+System.out.println(hashSet); // Output: [Apple]
+```
+
+### Removing All Elements from Another Set:
+Use `removeAll()` to remove elements in another set from the current set.
+
+```java
+Set<String> anotherSet = new HashSet<>();
+anotherSet.add("Apple");
+
+hashSet.removeAll(anotherSet); // Removes "Apple"
+System.out.println(hashSet); // Output: [Cherry]
+```
+
+---
+
+## Time Complexity for Hash Sets
+
+### **Add**
+- **Average Case:** \( O(1) \)
+- **Worst Case:** \( O(n) \)
+
+**Explanation:**
+- **Average Case \( O(1) \):** The hash function maps the element to an index, and the element is added to the set. With minimal collisions, the operation is constant time.
+- **Worst Case \( O(n) \):** If many elements hash to the same index (collisions), adding a new element may involve traversing a long bucket or probing multiple slots.
+
+---
+
+### **Remove**
+- **Average Case:** \( O(1) \)
+- **Worst Case:** \( O(n) \)
+
+**Explanation:**
+- **Average Case \( O(1) \):** The hash function calculates the index of the element, and it is removed directly from the set.
+- **Worst Case \( O(n) \):** In case of collisions, locating and removing the element may require traversing a long bucket (separate chaining) or probing multiple slots (open addressing).
+
+---
+
+### **Contains (Search)**
+- **Average Case:** \( O(1) \)
+- **Worst Case:** \( O(n) \)
+
+**Explanation:**
+- **Average Case \( O(1) \):** The hash function computes the index, and the element is retrieved directly from the set.
+- **Worst Case \( O(n) \):** When many elements hash to the same index, searching for the desired element involves traversing the bucket or probing multiple slots.
+
+---
+
+## Summary Table
+
+| Operation    | Average Time Complexity | Worst Time Complexity |
+|--------------|--------------------------|------------------------|
+| **Add**      | \( O(1) \)              | \( O(n) \)            |
+| **Remove**   | \( O(1) \)              | \( O(n) \)            |
+| **Contains** | \( O(1) \)              | \( O(n) \)            |
+
+---
+
+### Command Cheat Sheet for Hash Maps
 1. [Creating a Map](#1-creating-a-map)
 2. [Inserting Key-Value Pairs](#2-inserting-key-value-pairs)
 3. [Accessing Values](#3-accessing-values)
@@ -500,7 +703,7 @@ Given an array of integers and a target value, return the indices of the two num
     
 ---
 
-### Hash Implementation
+### Hash Map Implementation
 
 #### Description
 Hash maps are typically implemented using arrays under the hood, combined with a hash function to map keys to array indices. Collisions are handled using techniques like chaining or open addressing.
@@ -610,7 +813,7 @@ When the array becomes half full, double the array size and rehash all existing 
 
 ---
 
-## Time Complexities
+## Time Complexities for Hash Maps
 
 ### **Insert**
 - **Average Case:** \( O(1) \)
